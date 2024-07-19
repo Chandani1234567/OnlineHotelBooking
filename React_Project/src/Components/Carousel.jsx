@@ -1,7 +1,5 @@
-
 import React from 'react';
 import withAnimation from '../hoc/withAnimation';
-
 import PrimaryButton from './Buttons/PrimaryButton';
 import LightButton from './Buttons/LightButton';
 
@@ -17,7 +15,7 @@ const Carousel = () => {
                 <h6 className="section-title text-white text-uppercase mb-3">Luxury Living</h6>
                 <h1 className="display-3 text-white mb-4 animated slideInDown fontWeight">Discovering A Brand Luxurious Hotel</h1>
                 <PrimaryButton href="#rooms">Our Rooms</PrimaryButton>
-                <LightButton href="#">Book A Room</LightButton>
+                <LightButton href="/book-a-room">Book A Room</LightButton>
               </div>
             </div>
           </div>
@@ -27,8 +25,8 @@ const Carousel = () => {
               <div className="p-3" style={{ maxWidth: '700px' }}>
                 <h6 className="section-title text-white text-uppercase mb-3 animated slideInDown">Luxury Living</h6>
                 <h1 className="display-3 text-white mb-4 animated slideInDown fontWeight">Discover A Brand Luxurious Hotel</h1>
-                <a href="#" className="btn btn-warning py-md-3 px-md-5 me-3 animated slideInLeft BackgroundColor text-white">Our Rooms</a>
-                <a href="#" className="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
+                <a href="#rooms" className="btn btn-warning py-md-3 px-md-5 me-3 animated slideInLeft BackgroundColor text-white">Our Rooms</a>
+                <a href="/book-a-room" className="btn btn-light py-md-3 px-md-5 animated slideInRight">Book A Room</a>
               </div>
             </div>
           </div>
@@ -45,7 +43,5 @@ const Carousel = () => {
     </div>
   );
 };
-
-
 
 export default withAnimation(Carousel, 'animate__slideInDown');

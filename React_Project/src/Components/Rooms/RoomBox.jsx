@@ -1,7 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import 'animate.css/animate.min.css';
 
 const RoomBox = ({ imgSrc, price, name, stars, features, delay }) => {
+  const navigate = useNavigate();
+
+  const handleBookNow = (event) => {
+    event.preventDefault();
+    navigate('/book-a-room');
+  };
+
   return (
     <div className="col-lg-4 col-md-6" style={{ animationDelay: delay }}>
       <div className="room-item shadow rounded overflow-hidden">
@@ -29,15 +37,15 @@ const RoomBox = ({ imgSrc, price, name, stars, features, delay }) => {
             ))}
           </div>
           <p className="text-body mb-3">
-          "Experience unparalleled luxury and comfort in our Junior Suite room. Enjoy spacious accommodations, elegant décor, and modern amenities."
+            "Experience unparalleled luxury and comfort in our Junior Suite room. Enjoy spacious accommodations, elegant décor, and modern amenities."
           </p>
           <div className="d-flex justify-content-between">
             <a className="btn btn-sm BackgroundColor rounded py-2 px-4 text-white" href="">
               View Detail
             </a>
-            <a className="btn btn-sm btn-dark rounded py-2 px-4" href="">
+            <button className="btn btn-sm btn-dark rounded py-2 px-4" onClick={handleBookNow}>
               Book Now
-            </a>
+            </button>
           </div>
         </div>
       </div>

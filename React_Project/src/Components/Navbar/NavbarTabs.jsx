@@ -1,28 +1,29 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
-      <a href="index.html" className="navbar-brand d-block d-lg-none">
-        <h1 className="m-0 text-Warning text-uppercase">Hotel</h1>
-      </a>
+      <Link to="/" className="navbar-brand d-block d-lg-none">
+        <h1 className="m-0 text-warning text-uppercase">Hotel</h1>
+      </Link>
       <button type="button" className="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
         <span className="navbar-toggler-icon"></span>
       </button>
       <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
         <div className="navbar-nav mr-auto py-0">
-          <a href="#home" className="nav-item nav-link active">Home</a>
-          <a href="#about" className="nav-item nav-link">About</a>
-          <a href="#service" className="nav-item nav-link">Services</a>
-          <a href="#rooms" className="nav-item nav-link">Rooms</a>
+          <Link to="/" className="nav-item nav-link active">Home</Link>
+          <Link to="/about" className="nav-item nav-link">About</Link>
+          <Link to="/services" className="nav-item nav-link">Services</Link>
+          <Link to="/rooms" className="nav-item nav-link">Rooms</Link>
           <div className="nav-item dropdown">
-            <a href="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+            <Link to="#" className="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</Link>
             <div className="dropdown-menu rounded-0 m-0">
-              <a href="#team" className="dropdown-item">Our Team</a>
-              <a href="#testimonial" className="dropdown-item">Testimonial</a>
+              <Link to="/team" className="dropdown-item">Our Team</Link>
+              <Link to="/testimonial" className="dropdown-item">Testimonial</Link>
             </div>
           </div>
-          <a href="#contact" className="nav-item nav-link">Contact</a>
+          <Link to="/contact" className="nav-item nav-link">Contact</Link>
         </div>
       </div>
     </nav>

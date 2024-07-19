@@ -1,0 +1,32 @@
+/* Add these styles to your main stylesheet or component specific CSS file */
+.booking-form {
+  padding: 20px;
+  background-color:white;
+  border: 1px solid #dee2e6;
+  border-radius: 5px;
+  position: relative; /* Ensure relative positioning */
+  z-index: 1; /* Ensure the form is on top */
+}
+
+.booking-form form {
+  width: 100%; /* Ensure the form takes full width of the parent */
+}
+
+.booking-form .form-floating {
+  margin-bottom: 15px;
+}
+
+.booking-form .form-control {
+  height: 45px; /* Adjust input height as needed */
+}
+
+.booking-form textarea {
+  resize: none; /* Disable textarea resizing */
+}
+
+/* Media query for smaller screens if needed */
+@media (max-width: 992px) {
+  .booking-form {
+    padding: 15px;
+  }
+}
