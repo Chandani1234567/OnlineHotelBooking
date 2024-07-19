@@ -13,7 +13,7 @@ const About = () => {
             <div className="col-lg-6">
               <TitleSection />
               <Counters />
-              <a className="btn  BackgroundColor text-white py-3 px-5 mt-2" href="explore.html">Explore More</a>
+              <a className="btn  BackgroundColor text-white py-3 px-5 mt-2" href="/Explore">Explore More</a>
             </div>
             <div className="col-lg-6">
               <Images />
