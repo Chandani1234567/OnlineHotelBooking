@@ -12,6 +12,7 @@ import Footer from './Components/Footer/Footer.jsx';
 import Rooms from './Components/Rooms/Rooms.jsx';
 import Contact from './Components/Contact/Contact.jsx';
 import Book_a_room from './Components/Booking/Book_a_room.jsx';
+import Explore from './Components/Explore/Explore.jsx';
 
 import 'animate.css';
 import './index.css';
@@ -47,6 +48,8 @@ const App = () => {
           <Route path="/testimonial" element={<Testimonials />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/book-a-room" element={<Book_a_room />} />
+          <Route path="/Explore" element={<Explore />} />
+
         </Routes>
         <Footer />
       </div>
