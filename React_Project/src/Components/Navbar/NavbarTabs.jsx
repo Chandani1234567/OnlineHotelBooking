@@ -12,7 +12,7 @@ const Navbar = () => {
       </button>
       <div className="collapse navbar-collapse justify-content-between" id="navbarCollapse">
         <div className="navbar-nav mr-auto py-0">
-          <Link to="/" className="nav-item nav-link active">Home</Link>
+          <Link to="/" className="nav-item nav-link ">Home</Link>
           <Link to="/about" className="nav-item nav-link">About</Link>
           <Link to="/services" className="nav-item nav-link">Services</Link>
           <Link to="/rooms" className="nav-item nav-link">Rooms</Link>
