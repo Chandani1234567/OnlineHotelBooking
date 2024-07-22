@@ -1,5 +1,6 @@
 import React from "react";
 import NavbarAuth from "./NavbarAuth/client/NavbarAuth";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
@@ -30,7 +31,7 @@ const Navbar = () => {
               className="nav-link dropdown-toggle"
               data-bs-toggle="dropdown"
             >
-              Pages
+              More
             </a>
             <div className="dropdown-menu rounded-0 m-0">
               <a href="#team" className="dropdown-item">
@@ -41,12 +42,13 @@ const Navbar = () => {
               </a>
             </div>
           </div>
-          <a href="contact.html" className="nav-item nav-link">
+          <a href="/contact" className="nav-item nav-link">
             Contact
           </a>
-          <NavbarAuth />
+         
         </div>
       </div>
+       <NavbarAuth />
     </nav>
   );
 };
