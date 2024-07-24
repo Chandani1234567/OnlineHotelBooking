@@ -1,3 +1,4 @@
+/* RoomDetails.css */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
@@ -55,12 +56,12 @@ a {
     color: #FEA116;
     text-decoration: none;
 }
-    
+
 .container {
     width: 80%;
     margin: auto;
     overflow: hidden;
-}  
+}
 
 button:hover {
     background-color: #FEA116;
@@ -85,68 +86,67 @@ button:hover {
     font-weight: bold;
     margin-top: 10px;
 }
-/*float*/
 
-/* Heading styles */
 .container h2 {
-font-size: 24px;
-margin-bottom: 20px;
-color: #444;
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #444;
 }
 
-/* Image styles */
 .container img.floting {
-float: right;
-margin-right: 20px;
-margin-bottom: 20px;
-width: 480px;
-height: auto;
-border-radius: 8px;
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 480px;
+    height: auto;
+    border-radius: 8px;
 }
-/* Hover effect for image */
+
 .container img.floting:hover {
-transform: scale(1.05); 
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
+
 .container img.floting1 {
-float: left;
-margin-right: 20px;
-margin-bottom: 20px;
-width: 420px;
-height: auto;
-border-radius: 8px;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 470px;
+    height: auto;
+    border-radius: 8px;
 }
+
 .container img.floting1:hover {
-transform: scale(1.05); 
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
+
 .container img.floting2 {
-float: right;
-margin-right: 20px;
-margin-bottom: 20px;
-width: 470px;
-height: auto;
-border-radius: 8px;
+    float: right;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: 470px;
+    height: auto;
+    border-radius: 8px;
 }
+
 .container img.floting2:hover {
-transform: scale(1.05); 
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    transform: scale(1.05); 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
-/* Paragraph styles */
+
 .container p {
-line-height: 1.6;
-margin-bottom: 10px;
+    line-height: 1.6;
+    margin-bottom: 10px;
 }
 
-/* Bold text styles */
 .container p b {
-font-weight: bold;
-color: #222;
+    font-weight: bold;
+    color: #222;
 }
 
-/* Clearfix for floating elements */
 .container::after {
-content: "";
-display: table;
-clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
