@@ -6,7 +6,7 @@ const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
       <a href="index.html" className="navbar-brand d-block d-lg-none">
-        <h1 className="m-0 text-Warning text-uppercase">Hotelier</h1>
+        <h1 className="m-0 fontColor fontWeight text-uppercase">Paragon</h1>
       </a>
       <button
         type="button"
@@ -34,12 +34,15 @@ const Navbar = () => {
               More
             </a>
             <div className="dropdown-menu rounded-0 m-0">
-              <a href="#team" className="dropdown-item">
+              <Link to="/team" className="dropdown-item">
                 Our Team
-              </a>
-              <a href="#testimonial" className="dropdown-item">
+              </Link>
+              <Link to="/testimonial" className="dropdown-item">
                 Testimonial
-              </a>
+              </Link>
+              <Link to="/book-a-room" className="dropdown-item">
+                Book A Room
+              </Link>
             </div>
           </div>
           <a href="/contact" className="nav-item nav-link">

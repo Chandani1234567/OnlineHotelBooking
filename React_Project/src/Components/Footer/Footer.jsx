@@ -3,6 +3,7 @@ import FooterSection from './FooterSection';
 import FooterLink from './FooterLink';
 import FooterSocialLink from './FooterSocialLink';
 import FooterCopyright from './FooterCopyright';
+import './Footer.css'
 
 const Footer = () => {
   return (

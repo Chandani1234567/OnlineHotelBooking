@@ -2,6 +2,8 @@ import React from 'react';
 import ServiceItem from './ServiceItem';
 import withAnimation from '../../hoc/withAnimation';
 
+import './Service.css';
+
 const services = [
   {
     icon: 'fa-hotel',
@@ -43,7 +45,7 @@ const services = [
 
 const Service = () => {
   return (
-    <section id="service">
+  
       <div className="container-xxl py-5">
         <div className="container">
           <div className="text-center" data-wow-delay="0.1s">
@@ -57,7 +59,7 @@ const Service = () => {
           </div>
         </div>
       </div>
-    </section>
+  
   );
 };
 

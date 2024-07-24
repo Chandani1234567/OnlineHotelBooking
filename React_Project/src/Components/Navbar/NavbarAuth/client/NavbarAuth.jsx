@@ -43,7 +43,7 @@ const NavbarAuth = () => {
   return (
     <>
       <button
-        className="butto"
+        className="LoginButton"
         id="form-open"
         onClick={loggedIn ? handleLogout : openLogin}
       >

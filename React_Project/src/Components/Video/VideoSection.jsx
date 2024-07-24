@@ -17,8 +17,8 @@ const VideoSection = () => {
               your ultimate relaxation. Your unforgettable stay begins here.
             </p>
           
-             <PrimaryButton href="#">Our Rooms</PrimaryButton>
-             <LightButton href="#">Book A Room</LightButton>
+             <PrimaryButton href="/rooms">Our Rooms</PrimaryButton>
+             <LightButton href="/Book-a-room">Book A Room</LightButton>
           </div>
         </div>
         <div className="col-md-6">

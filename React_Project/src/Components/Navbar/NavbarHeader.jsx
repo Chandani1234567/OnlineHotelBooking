@@ -5,6 +5,8 @@ import ContactInfo from './NavbarContactInfo';
 import SocialLinks from './NavbarSocialLinks';
 import Navbar from './NavbarTabs';
 
+import './Navbar.css'
+
 
 
 const Header = () => {

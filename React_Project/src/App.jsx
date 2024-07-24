@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // Import components
 import Header from './Components/Navbar/NavbarHeader';
-import Carousel from './Components/Carousel';
+import Carousel from './Components/Carousel/Carousel.jsx';
 import About from './Components/About/About.jsx';
 import Video from './Components/Video/Video.jsx';
 import Service from './Components/Service/Service.jsx';
@@ -30,8 +30,7 @@ const Home = () => (
     <Video />
     <Service />
     <Testimonials />
-    <TeamSection />
-    <Contact />
+    
   </>
 );
 
@@ -50,6 +49,7 @@ const App = () => (
         <Route path="/book-a-room" element={<Book_a_room />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/room/:roomType" element={<Room />} />
+       
       </Routes>
       <Footer />
     </div>
