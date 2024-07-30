@@ -1,5 +1,6 @@
 import React from 'react';
 import RoomBox from './RoomBox';
+import './RoomBox.css';
 
 const rooms = [
   {
@@ -14,7 +15,16 @@ const rooms = [
     ],
     delay: '0.1s',
     roomType: 'juniorSuite',
-    description: "Experience unparalleled luxury and comfort in our Junior Suite room. Enjoy spacious accommodations, modern amenities. Your private sanctuary awaits for a truly memorable stay."
+    description: "Experience unparalleled luxury and comfort in our Junior Suite room. Enjoy spacious accommodations, modern amenities. Your private sanctuary awaits for a truly memorable stay.",
+    amenities: [
+      { title: 'Wi-Fi', detail: 'No Wifi' },
+      { title: 'Entertainment', detail: '40" LED TV with satellite channels' },
+      { title: 'Workspace', detail: 'Executive desk and ergonomic chair' },
+      { title: 'Bathroom', detail: 'Bathroom with Jacuzzi and rain shower' },
+      { title: 'Minibar', detail: 'Fully stocked minibar' },
+      { title: 'Climate Control', detail: 'Individually controlled air conditioning' },
+      { title: 'Extras', detail: 'Bathrobes, slippers, luxury toiletries' }
+    ],
   },
   {
     imgSrc: 'img/room-2.jpg',
@@ -28,7 +38,18 @@ const rooms = [
     ],
     delay: '0.3s',
     roomType: 'executiveSuite',
-    description: "Elevate your stay in our Executive Suite. Enjoy spacious elegance, modern amenities, and personalized service. Experience luxury and comfort like never before. Your refined retreat awaits."
+    description: "Elevate your stay in our Executive Suite. Enjoy spacious elegance, modern amenities, and personalized service. Experience luxury and comfort like never before. Your refined retreat awaits.",
+    amenities: [
+      { title: 'Wi-Fi', detail: 'Free high-speed internet' },
+      { title: 'Entertainment', detail: '55" LED TV with satellite channels' },
+      { title: 'Workspace', detail: 'Executive desk and ergonomic chair' },
+      { title: 'Bathroom', detail: 'Bathroom with Jacuzzi and rain shower' },
+      { title: 'Minibar', detail: 'Fully stocked minibar' },
+      { title: 'Climate Control', detail: 'Individually controlled air conditioning' },
+      { title: 'Safety', detail: 'In-room safe' },
+      { title: 'Extras', detail: 'Bathrobes, slippers, luxury toiletries' }
+    ],
+    
   },
   {
     imgSrc: 'img/room-3.jpg',
@@ -42,7 +63,18 @@ const rooms = [
     ],
     delay: '0.6s',
     roomType: 'superDeluxRoom',
-    description: "Unwind in style in our Super Deluxe room, featuring elegant decor, modern amenities, and personalized service. Experience ultimate comfort and relaxation for a truly memorable stay."
+    description: "Unwind in style in our Super Deluxe room, featuring elegant decor, modern amenities, and personalized service. Experience ultimate comfort and relaxation for a truly memorable stay.",
+    amenities: [
+      { title: 'Wi-Fi', detail: 'Free high-speed internet' },
+      { title: 'Entertainment', detail: '55" LED TV with satellite channels' },
+      { title: 'Workspace', detail: 'Executive desk and ergonomic chair' },
+      { title: 'Bathroom', detail: 'Bathroom with Jacuzzi and rain shower' },
+      { title: 'Minibar', detail: 'Fully stocked minibar' },
+      { title: 'Coffee/Tea', detail: 'Espresso machine and kettle' },
+      { title: 'Climate Control', detail: 'Individually controlled air conditioning' },
+      { title: 'Safety', detail: 'In-room safe' },
+      { title: 'Extras', detail: 'Bathrobes, slippers, luxury toiletries' }
+    ],
   }
 ];
 
@@ -55,7 +87,7 @@ const RoomList = () => {
             <h6 className="section-title text-center text-uppercase fontColor fontWeight">Our Rooms</h6>
             <h1 className="mb-5">Explore Our <span className="fontColor fontWeight text-uppercase">Rooms</span></h1>
           </div>
-          <div className="row g-4">
+          <div className="row g-4 scrollable-rooms">
             {rooms.map((room, index) => (
               <RoomBox
                 key={index}
@@ -67,6 +99,8 @@ const RoomList = () => {
                 delay={room.delay}
                 roomType={room.roomType}
                 description={room.description}
+                amenities={room.amenities}
+                imgAmenity={room.imgAmenity}
               />
             ))}
           </div>

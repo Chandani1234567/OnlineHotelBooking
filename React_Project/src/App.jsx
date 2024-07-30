@@ -49,7 +49,7 @@ const App = () => (
         <Route path="/book-a-room" element={<Book_a_room />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/room/:roomType" element={<Room />} />
-       
+
       </Routes>
       <Footer />
     </div>
