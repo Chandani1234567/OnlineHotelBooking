@@ -13,14 +13,14 @@ const Footer = () => {
           <div className="sections-container">
             <FooterSection title="Hotelier" className="section-item BackgroundColor rounded p-4" >
               <a href="index.html" style={{textDecoration:"none"}}> 
-                <h1 className="text-white text-uppercase mb-3" >Hotelier</h1>
+                <h1 className="text-white text-uppercase mb-3" >Paragon</h1>
               </a>
               <p className="text-white mb-0">
-                Build a professional website for your hotel business and grab the attention of new visitors upon your site’s launch.
+              "Experience unparalleled comfort and luxury at our boutique hotel."
               </p>
             </FooterSection>
             <FooterSection title="Contact" className="section-item">
-              <p className="mb-2"><i className="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
+              <p className="mb-2"><i className="fa fa-map-marker-alt me-3"></i>Sector-1, Block-d, NSTI Noida</p>
               <p className="mb-2"><i className="fa fa-phone-alt me-3"></i>+012 345 67890</p>
               <p className="mb-2"><i className="fa fa-envelope me-3"></i>info@example.com</p>
               <div className="d-flex pt-2">
