@@ -16,7 +16,7 @@ const Carousel = () => {
             <div className="carousel-caption d-flex flex-column align-items-center justify-content-center">
               <div className="p-3" style={{ maxWidth: '700px' }}>
                 <h6 className="section-title text-white text-uppercase mb-3">Luxury Living</h6>
-                <h1 className="display-3 text-white mb-4 animated slideInDown fontWeight">Discovering A Brand Luxurious Hotel</h1>
+                <h1 className="display-3 text-white mb-4 animated slideInDown fontWeight">Discover A Brand Luxurious Hotel</h1>
                 <PrimaryButton href="/rooms" class="animated.flipOutX">Our Rooms</PrimaryButton>
                 <LightButton href="/book-a-room">Book A Room</LightButton>
               </div>

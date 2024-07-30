@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import './Booking.css'; // Ensure you import your custom CSS
+import './Booking.css';
 
 const BookingForm = () => {
+  const location = useLocation();
+  const { roomType } = location.state || {}; // Get the room type from navigation state
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -11,7 +15,7 @@ const BookingForm = () => {
     checkoutDate: null,
     select1: '',
     select2: '',
-    select3: '',
+    select3: roomType || '', // Set default room type if provided
     message: '',
   });
 
@@ -105,9 +109,9 @@ const BookingForm = () => {
                 value={formData.select1}
                 onChange={handleInputChange}
               >
-                <option value="1">Adult 1</option>
-                <option value="2">Adult 2</option>
-                <option value="3">Adult 3</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
               </select>
               <label htmlFor="select1">Select Adult</label>
             </div>
@@ -120,9 +124,9 @@ const BookingForm = () => {
                 value={formData.select2}
                 onChange={handleInputChange}
               >
-                <option value="1">Child 1</option>
-                <option value="2">Child 2</option>
-                <option value="3">Child 3</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
               </select>
               <label htmlFor="select2">Select Child</label>
             </div>
@@ -135,9 +139,9 @@ const BookingForm = () => {
                 value={formData.select3}
                 onChange={handleInputChange}
               >
-                <option value="1">Room 1</option>
-                <option value="2">Room 2</option>
-                <option value="3">Room 3</option>
+                <option value="juniorSuite">Junior Suite</option>
+                <option value="executiveSuite">Executive Suite</option>
+                <option value="superDeluxRoom">Super Deluxe</option>
               </select>
               <label htmlFor="select3">Select A Room</label>
             </div>

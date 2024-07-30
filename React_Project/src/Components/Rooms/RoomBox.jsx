@@ -10,7 +10,7 @@ const RoomBox = ({ imgSrc, price, name, stars, features, delay, roomType, descri
 
   const handleBookNow = (event) => {
     event.preventDefault();
-    navigate('/book-a-room');
+    navigate('/book-a-room', { state: { roomType } });
   };
 
   const handleViewDetail = (event) => {
