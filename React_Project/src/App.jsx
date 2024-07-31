@@ -15,6 +15,12 @@ import Contact from './Components/Contact/Contact.jsx';
 import Book_a_room from './Components/Booking/Book_a_room.jsx';
 import Explore from './Components/Explore/Explore.jsx';
 import Room from './Components/Room_Details/Room.jsx';
+import Apartment from './Components/Service/Apartment.jsx';
+import Restaurant from './Components/Service/Restaurant.jsx';
+import Spa from './Components/Service/Spa.jsx';
+import Sports from './Components/Service/Sports.jsx';
+import Event from './Components/Service/Event.jsx';
+import Gym from './Components/Service/Gym.jsx';
 
 // Import styles
 import 'animate.css';
@@ -49,6 +55,20 @@ const App = () => (
         <Route path="/book-a-room" element={<Book_a_room />} />
         <Route path="/explore" element={<Explore />} />
         <Route path="/room/:roomType" element={<Room />} />
+        <Route path="/apartment" element={<Apartment />} />
+        <Route path="/restaurant" element={<Restaurant />} />
+        <Route path="/spa" element={<Spa />} />
+        <Route path="/sports" element={<Sports />} />
+        <Route path="/event" element={<Event />} />
+        <Route path="/gym" element={<Gym />} />
+
+
+
+
+
+
+
+
 
       </Routes>
       <Footer />
