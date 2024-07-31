@@ -1,16 +1,44 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import 'animate.css/animate.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min';
+import React, { useState, useEffect } from "react";
+import Supabase from "../Navbar/NavbarAuth/server/supabaseClient";
+import Login from "../Navbar/NavbarAuth/client/Login";
+import Signup from "../Navbar/NavbarAuth/client/Signup";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap.bundle.min";
 
-const RoomBox = ({ imgSrc, price, name, stars, features, delay, roomType, description, amenities, imgAmenity }) => {
-  const navigate = useNavigate();
+const RoomBox = ({
+  imgSrc,
+  price,
+  name,
+  stars,
+  features,
+  delay,
+  roomType,
+  description,
+  amenities,
+  imgAmenity,
+}) => {
   const [showModal, setShowModal] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignup, setShowSignup] = useState(false);
+
+  useEffect(() => {
+    const checkUser = async () => {
+      const {
+        data: { session },
+      } = await Supabase.auth.getSession();
+      setLoggedIn(!!session);
+    };
+    checkUser();
+  }, []);
 
   const handleBookNow = (event) => {
     event.preventDefault();
-    navigate('/book-a-room', { state: { roomType } });
+    if (loggedIn) {
+      window.location.replace("/book-a-room");
+    } else {
+      setShowLogin(true);
+    }
   };
 
   const handleViewDetail = (event) => {
@@ -20,6 +48,16 @@ const RoomBox = ({ imgSrc, price, name, stars, features, delay, roomType, descri
 
   const handleCloseModal = () => {
     setShowModal(false);
+  };
+
+  const closeLogin = () => {
+    setShowLogin(false);
+    setShowSignup(false);
+  };
+
+  const toggleForm = () => {
+    setShowLogin(!showLogin);
+    setShowSignup(!showSignup);
   };
 
   return (
@@ -42,7 +80,12 @@ const RoomBox = ({ imgSrc, price, name, stars, features, delay, roomType, descri
           </div>
           <div className="d-flex mb-3">
             {features.map((feature, i) => (
-              <small key={i} className={`border-end ${i < features.length - 1 ? 'me-3 pe-3' : ''}`}>
+              <small
+                key={i}
+                className={`border-end ${
+                  i < features.length - 1 ? "me-3 pe-3" : ""
+                }`}
+              >
                 <i className={`fa ${feature.icon} fontColor me-2`}></i>
                 {feature.text}
               </small>
@@ -50,10 +93,16 @@ const RoomBox = ({ imgSrc, price, name, stars, features, delay, roomType, descri
           </div>
           <p className="text-body mb-3">{description}</p>
           <div className="d-flex justify-content-between">
-            <button className="btn btn-sm BackgroundColor rounded py-2 px-4 text-white" onClick={handleViewDetail}>
+            <button
+              className="btn btn-sm BackgroundColor rounded py-2 px-4 text-white"
+              onClick={handleViewDetail}
+            >
               View Detail
             </button>
-            <button className="btn btn-sm btn-dark rounded py-2 px-4" onClick={handleBookNow}>
+            <button
+              className="btn btn-sm btn-dark rounded py-2 px-4"
+              onClick={handleBookNow}
+            >
               Book Now
             </button>
           </div>
@@ -62,27 +111,49 @@ const RoomBox = ({ imgSrc, price, name, stars, features, delay, roomType, descri
 
       {/* Modal */}
       {showModal && (
-        <div className="modal fade show d-block" tabIndex="-1" role="dialog" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+        <div
+          className="modal fade show d-block"
+          tabIndex="-1"
+          role="dialog"
+          style={{ backgroundColor: "rgba(0,0,0,0.5)" }}
+        >
           <div className="modal-dialog modal-dialog-centered" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title">{name} Amenities</h5>
-                <button type="button" className="btn-close" aria-label="Close" onClick={handleCloseModal}></button>
+                <button
+                  type="button"
+                  className="btn-close"
+                  aria-label="Close"
+                  onClick={handleCloseModal}
+                ></button>
               </div>
               <div className="modal-body">
                 <ul>
                   {amenities.map((amenity, index) => (
-                    <li key={index}><b>{amenity.title}:</b> {amenity.detail}</li>
+                    <li key={index}>
+                      <b>{amenity.title}:</b> {amenity.detail}
+                    </li>
                   ))}
                 </ul>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" onClick={handleCloseModal}>Close</button>
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  onClick={handleCloseModal}
+                >
+                  Close
+                </button>
               </div>
             </div>
           </div>
         </div>
       )}
+
+      {/* Login and Signup Modals */}
+      {showLogin && <Login closeLogin={closeLogin} toggleForm={toggleForm} />}
+      {showSignup && <Signup closeLogin={closeLogin} toggleForm={toggleForm} />}
     </div>
   );
 };

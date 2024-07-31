@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import supabase from "../server/supabaseClient";
+import Supabase from "../server/supabaseClient";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -22,7 +22,7 @@ const Login = ({ closeLogin, toggleForm }) => {
     setError("");
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
+      const { error } = await Supabase.auth.signInWithPassword({
         email,
         password,
       });
@@ -49,7 +49,7 @@ const Login = ({ closeLogin, toggleForm }) => {
     setError("");
 
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email);
+      const { error } = await Supabase.auth.resetPasswordForEmail(email);
 
       if (error) throw error;
 
@@ -121,7 +121,7 @@ const Login = ({ closeLogin, toggleForm }) => {
 
               <div className="login_signup">
                 Don't have an account?{" "}
-                <a href="#" id="signup" onClick={toggleForm}>
+                <a href="javascript:void(0);" id="signup" onClick={toggleForm}>
                   Signup
                 </a>
               </div>

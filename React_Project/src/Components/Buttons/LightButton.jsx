@@ -1,13 +1,16 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import "./Button.css";
 
-import React from 'react';
-import './Button.css'
-
-
-const LightButton = ({ children, href }) => {
+const LightButton = ({ children, to, onClick }) => {
   return (
-    <a href={href} className="btn btn-light py-md-3 px-md-5 animated slideInRight">
+    <Link
+      to={to}
+      onClick={onClick}
+      className="btn btn-light py-md-3 px-md-5 animated slideInRight"
+    >
       {children}
-    </a>
+    </Link>
   );
 };
 

@@ -1,16 +1,16 @@
-import React from 'react';
-import TitleSection from './TitleSection';
-import Counters from './Counter';
-import Images from './Images';
-import withAnimation from '../../hoc/withAnimation';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import TitleSection from "./TitleSection";
+import Counters from "./Counter";
+import Images from "./Images";
+import WithAnimation from "../../hoc/WithAnimation";
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
   const navigate = useNavigate();
 
   const handleExplore = (event) => {
     event.preventDefault();
-    navigate('/explore');
+    navigate("/explore");
   };
 
   return (
