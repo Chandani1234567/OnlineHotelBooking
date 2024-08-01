@@ -1,6 +1,6 @@
-import React from "react";
-import TeamMember from "./TeamMember";
-import WithAnimation from "../../hoc/WithAnimation";
+import React from 'react';
+import TeamMember from './TeamMember';
+import withAnimation from '../../hoc/withAnimation';
 
 const TeamSection = () => {
   return (
@@ -8,13 +8,8 @@ const TeamSection = () => {
       <div className="container-xxl py-5">
         <div className="container">
           <div className="text-center">
-            <h6 className="section-title text-center fontColor fontWeight text-uppercase">
-              Our Team
-            </h6>
-            <h1 className="mb-5 fontWeight">
-              Explore Our{" "}
-              <span className="fontColor fontWeight text-uppercase">Team</span>
-            </h1>
+            <h6 className="section-title text-center fontColor fontWeight text-uppercase">Our Team</h6>
+            <h1 className="mb-5 fontWeight">Explore Our <span className="fontColor fontWeight text-uppercase">Team</span></h1>
           </div>
           <div className="row g-4">
             <TeamMember
@@ -60,4 +55,4 @@ const TeamSection = () => {
   );
 };
 
-export default WithAnimation(TeamSection, "animate__fadeInUp");
+export default withAnimation(TeamSection, 'animate__fadeInUp');

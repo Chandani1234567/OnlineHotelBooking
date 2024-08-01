@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
-import Supabase from "../server/supabaseClient"; // Adjust path if needed
+import supabase from "../server/supabaseClient"; // Adjust path if needed
 import "./NavbarAuth.css";
 
 const NavbarAuth = () => {
@@ -13,7 +13,7 @@ const NavbarAuth = () => {
     const checkUser = async () => {
       const {
         data: { session },
-      } = await Supabase.auth.getSession();
+      } = await supabase.auth.getSession();
       setLoggedIn(!!session);
     };
     checkUser();
@@ -29,14 +29,13 @@ const NavbarAuth = () => {
     setShowSignup(false);
   };
 
-  const toggleForm = (e) => {
-    e.preventDefault();
+  const toggleForm = () => {
     setShowLogin(!showLogin);
     setShowSignup(!showSignup);
   };
 
   const handleLogout = async () => {
-    await Supabase.auth.signOut();
+    await supabase.auth.signOut();
     setLoggedIn(false);
     window.location.reload(); // Reload the page after logout
   };

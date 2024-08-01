@@ -1,15 +1,18 @@
+
 import VideoSection from "./VideoSection";
 import VideoModal from "./VideoModal";
-import WithAnimation from "../../hoc/WithAnimation";
-import "./Video.css";
+import withAnimation from '../../hoc/withAnimation';
+import './Video.css'
 
-function Video() {
-  return (
-    <>
-      <VideoSection />
-      <VideoModal />
-    </>
-  );
+
+function Video(){
+    return(
+        <>
+            <VideoSection/>
+            <VideoModal/>
+
+        </>
+    )
 }
 
-export default WithAnimation(Video, "animate__zoomIn");
+export default withAnimation(Video, 'animate__zoomIn');

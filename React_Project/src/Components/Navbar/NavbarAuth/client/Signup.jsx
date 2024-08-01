@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import Supabase from "../server/supabaseClient";
+import supabase from "../server/supabaseClient";
 
 const Signup = ({ closeLogin, toggleForm }) => {
   const [passwordVisible, setPasswordVisible] = useState(false);
@@ -40,7 +40,7 @@ const Signup = ({ closeLogin, toggleForm }) => {
     }
 
     // Call Supabase sign-up function
-    const { data, error } = await Supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
       options: {
@@ -125,7 +125,7 @@ const Signup = ({ closeLogin, toggleForm }) => {
 
             <div className="login_signup">
               Already have an account?{" "}
-              <a href="javascript:void(0);" onClick={toggleForm}>
+              <a href="#" onClick={toggleForm}>
                 Login
               </a>
             </div>
