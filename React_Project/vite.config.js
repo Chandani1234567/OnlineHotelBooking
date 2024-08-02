@@ -10,5 +10,10 @@ export default defineConfig(({ mode }) => {
             'process.env.MONGO_URI': JSON.stringify(env.MONGO_URI),
         },
         plugins: [react()],
+        server: {
+            host: true,
+            strictPort: true,
+            port: 8000
+        },
     }
 });
