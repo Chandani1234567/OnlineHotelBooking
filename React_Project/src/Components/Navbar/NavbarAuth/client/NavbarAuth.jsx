@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Login from "./Login";
 import Signup from "./Signup";
-import supabase from "../server/supabaseClient"; // Adjust path if needed
+import axios from "axios";
 import "./NavbarAuth.css";
 
 const NavbarAuth = () => {
@@ -9,15 +9,14 @@ const NavbarAuth = () => {
   const [showSignup, setShowSignup] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
 
+  // Check user authentication status on component mount and whenever the token changes
   useEffect(() => {
-    const checkUser = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      setLoggedIn(!!session);
+    const checkUser = () => {
+      const token = localStorage.getItem("authToken");
+      setLoggedIn(!!token);
     };
     checkUser();
-  }, []);
+  }, []); // Empty dependency array means this runs once on component mount
 
   const closeLogin = () => {
     setShowLogin(false);
@@ -35,9 +34,21 @@ const NavbarAuth = () => {
   };
 
   const handleLogout = async () => {
-    await supabase.auth.signOut();
-    setLoggedIn(false);
-    window.location.reload(); // Reload the page after logout
+    try {
+      // Make sure the URL is correct and matches your server configuration
+      await axios.post(
+        "http://localhost:5000/logout",
+        {},
+        {
+          withCredentials: true, // Include credentials if needed
+        }
+      );
+      localStorage.removeItem("authToken");
+      setLoggedIn(false);
+      window.location.reload(); // Reload the page after logout
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
   };
 
   return (

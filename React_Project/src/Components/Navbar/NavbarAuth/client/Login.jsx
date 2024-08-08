@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import supabase from "../server/supabaseClient";
+import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./login.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -22,23 +22,23 @@ const Login = ({ closeLogin, toggleForm }) => {
     setError("");
 
     try {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
+      // Ensure the backend URL is correct
+      const response = await axios.post(
+        "http://localhost:5000/login",
+        { email, password }, // Send data as JSON
+        { headers: { "Content-Type": "application/json" } }
+      );
 
-      if (error) throw error;
+      // Extract token from response and store it
+      const { token } = response.data;
+      localStorage.setItem("authToken", token);
 
-      // Store the user email for "Remember Me" functionality
-      if (document.getElementById("remember_me").checked) {
-        localStorage.setItem("userEmail", email);
-      }
-
-      // Handle successful login
-      closeLogin(); // Close the login form
+      // Close login form and reload page
+      closeLogin();
       window.location.reload();
     } catch (error) {
-      setError(error.message); // Display error message
+      console.error("Axios error:", error.response?.data); // Log error details
+      setError(error.response?.data?.error || "An error occurred");
     } finally {
       setLoading(false);
     }
@@ -49,14 +49,16 @@ const Login = ({ closeLogin, toggleForm }) => {
     setError("");
 
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(email);
-
-      if (error) throw error;
-
-      alert("Password reset email sent. Please check your inbox.");
-      setForgotPassword(false); // Close the forgot password form
+      await axios.post(
+        "http://localhost:5000/forgot-password",
+        { email }, // Send data as JSON
+        { headers: { "Content-Type": "application/json" } }
+      );
+      alert("Password reset link sent to your email");
+      setForgotPassword(false);
     } catch (error) {
-      setError(error.message); // Display error message
+      console.error("Axios error:", error.response?.data); // Log error details
+      setError(error.response?.data?.error || "An error occurred");
     } finally {
       setLoading(false);
     }
@@ -70,9 +72,7 @@ const Login = ({ closeLogin, toggleForm }) => {
           {!forgotPassword ? (
             <form onSubmit={handleSubmit}>
               <h2>Login</h2>
-
               {error && <p className="error_message">{error}</p>}
-
               <div className="input_box">
                 <input
                   type="email"
@@ -83,7 +83,6 @@ const Login = ({ closeLogin, toggleForm }) => {
                 />
                 <i className="fa-solid fa-envelope email"></i>
               </div>
-
               <div className="input_box">
                 <input
                   type={passwordVisible ? "text" : "password"}
@@ -100,7 +99,6 @@ const Login = ({ closeLogin, toggleForm }) => {
                   onClick={handlePasswordToggle}
                 ></i>
               </div>
-
               <div className="option_field">
                 <span className="checkbox">
                   <input type="checkbox" id="remember_me" />
@@ -114,11 +112,9 @@ const Login = ({ closeLogin, toggleForm }) => {
                   Forgot password?
                 </a>
               </div>
-
               <button type="submit" className="button" disabled={loading}>
                 {loading ? "Logging in..." : "Login Now"}
               </button>
-
               <div className="login_signup">
                 Don't have an account?{" "}
                 <a href="#" id="signup" onClick={toggleForm}>
