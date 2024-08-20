@@ -40,9 +40,6 @@ const Navbar = () => {
               <Link to="/testimonial" className="dropdown-item">
                 Testimonial
               </Link>
-              <Link to="/book-a-room" className="dropdown-item">
-                Book A Room
-              </Link>
             </div>
           </div>
           <a href="/contact" className="nav-item nav-link">

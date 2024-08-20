@@ -10,10 +10,14 @@
   }
   
   .carousel-control-prev,
-  .carousel-control-next {
+  .carousel-control-next,
+ .no-hover:hover{
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: inherit !important;
     width: 10%;
   }
-  
+
   .carousel-control-prev-icon,
   .carousel-control-next-icon {
     width: 3rem;

@@ -30,21 +30,21 @@ const services = [
     title: 'Sports & Gaming',
     description: "Enjoy endless fun with our sports and gaming options, including tennis, swimming, and indoor games for all ages.",
     delay: '0.4s',
-    link: '/sports-gaming'
+    link: '/sports'
   },
   {
     icon: 'fa-glass-cheers',
     title: 'Event & Party',
     description: "Host unforgettable events with our elegant venues and expert planning for perfect weddings and memorable moments.",
     delay: '0.5s',
-    link: '/event-party'
+    link: '/event'
   },
   {
     icon: 'fa-dumbbell',
     title: 'GYM & Yoga',
     description: "Stay fit with our fully equipped gym and serene yoga studio, offering everything you need for a healthy stay.",
     delay: '0.6s',
-    link: '/gym-yoga'
+    link: '/gym'
   },
 ];
 

@@ -17,7 +17,7 @@ const TeamSection = () => {
               name="Chandani Verma"
               designation="Full Stack Developer"
               delay="0.1s"
-              Linkedin="https://www.linkedin.com/in/chandni-verma-947519206?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              linkedin="https://www.linkedin.com/in/chandni-verma-947519206?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
               github="https://github.com/Chandani1234567"
               instagramLink="https://www.instagram.com/chandaniverma565?igsh=MWNkNjluZm94dGFseQ=="
             />
@@ -26,7 +26,7 @@ const TeamSection = () => {
               name="Aanchal Kumari"
               designation="Full Stack Developer"
               delay="0.3s"
-              Linkedin="https://www.linkedin.com/in/aanchal-kumari-29a40a252/"
+              linkedin="https://www.linkedin.com/in/aanchal-kumari-29a40a252/"
               github="https://github.com/aanchal5555"
               instagramLink="https://twitter.com/AnchalK68223112"
             />
@@ -35,7 +35,7 @@ const TeamSection = () => {
               name="Khushboo Rai"
               designation="Full Stack Developer"
               delay="0.5s"
-              Linkedin="https://www.linkedin.com/in/khushboo-rai-a331a7244?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+              linkedin="https://www.linkedin.com/in/khushboo-rai-a331a7244?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
               github="https://github.com/khushboo55555"
               instagramLink="https://instagram.com/khushboo"
             />
@@ -44,7 +44,7 @@ const TeamSection = () => {
               name="Vinita Rawat"
               designation="Full Stack Developer"
               delay="0.7s"
-              Linkedin="https://facebook.com/vinita"
+              linkedin="https://facebook.com/vinita"
               github="https://twitter.com/vinita"
               instagramLink="https://instagram.com/vinita"
             />
