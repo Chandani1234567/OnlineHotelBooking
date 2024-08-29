@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // Import components
@@ -29,6 +28,8 @@ import './index.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
+import axios from "axios";
+
 const Home = () => (
   <>
     <Carousel />
@@ -40,40 +41,49 @@ const Home = () => (
   </>
 );
 
-const App = () => (
-  <Router>
-    <div className="container-xxl bg-white p-0">
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/services" element={<Service />} />
-        <Route path="/rooms" element={<Rooms />} />
-        <Route path="/team" element={<TeamSection />} />
-        <Route path="/testimonial" element={<Testimonials />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/book-a-room" element={<Book_a_room />} />
-        <Route path="/explore" element={<Explore />} />
-        <Route path="/room/:roomType" element={<Room />} />
-        <Route path="/apartment" element={<Apartment />} />
-        <Route path="/restaurant" element={<Restaurant />} />
-        <Route path="/spa" element={<Spa />} />
-        <Route path="/sports" element={<Sports />} />
-        <Route path="/event" element={<Event />} />
-        <Route path="/gym" element={<Gym />} />
+const App = () => {
+  const [array, setArray] = useState([]);
 
+  const fetchAPI = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/api");
+      setArray(response.data.fruits);
+      console.log(response.data.fruits);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
+  useEffect(() => {
+    fetchAPI();
+  }, []);
 
-
-
-
-
-
-
-      </Routes>
-      <Footer />
-    </div>
-  </Router>
-);
+  return (
+    <Router>
+      <div className="container-xxl bg-white p-0">
+        <Header />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/services" element={<Service />} />
+          <Route path="/rooms" element={<Rooms />} />
+          <Route path="/team" element={<TeamSection />} />
+          <Route path="/testimonial" element={<Testimonials />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/book-a-room" element={<Book_a_room />} />
+          <Route path="/explore" element={<Explore />} />
+          <Route path="/room/:roomType" element={<Room />} />
+          <Route path="/apartment" element={<Apartment />} />
+          <Route path="/restaurant" element={<Restaurant />} />
+          <Route path="/spa" element={<Spa />} />
+          <Route path="/sports" element={<Sports />} />
+          <Route path="/event" element={<Event />} />
+          <Route path="/gym" element={<Gym />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
+  );
+};
 
 export default App;
