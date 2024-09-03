@@ -50,15 +50,7 @@ const BookingForm = () => {
     if (!checkLoggedIn()) {
       setShowLogin(true);
     } else {
-      try {
-        const response = await axios.post("http://localhost:5000/bookings", {
-          Booking: formData,
-        });
-        console.log("Booking successful:", response.data);
-        // Optionally, you can clear the form or redirect the user
-      } catch (error) {
-        console.error("Error booking:", error);
-      }
+      
     }
   };
 
