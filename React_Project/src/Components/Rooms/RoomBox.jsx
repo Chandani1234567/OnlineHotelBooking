@@ -7,12 +7,13 @@ import 'bootstrap/dist/js/bootstrap.bundle.min';
 const RoomBox = ({ imgSrc, price, name, stars, features, delay, roomType, description, amenities, imgAmenity }) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const [selectedRoomType, setSelectedRoomType] = useState(roomType); // Set dynamic roomType by default
 
   const handleBookNow = (event) => {
     event.preventDefault();
-    navigate('/book-a-room', { state: { roomType } });
+    navigate('/book-a-room', { state: { roomType: selectedRoomType } });
   };
-
+  
   const handleViewDetail = (event) => {
     event.preventDefault();
     setShowModal(true);
