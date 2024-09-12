@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -19,9 +19,19 @@ const BookingForm = () => {
     checkoutDate: null,
     select1: "",
     select2: "",
-    select3: roomType || "",
+    select3: "", // Initially empty, will be updated in useEffect
     message: "",
   });
+
+   // Use useEffect to set the roomType into formData.select3 when the component mounts
+   useEffect(() => {
+    if (roomType) {
+      setFormData((prevState) => ({
+        ...prevState,
+        select3: roomType, // Initialize room type with value from location.state
+      }));
+    }
+  }, [roomType]);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -40,7 +50,12 @@ const BookingForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+    
+// Check if roomType (formData.select3) is empty before submission
+if (!formData.select3) {
+  alert("Please select a room type.");
+  return;
+}
     const bookingData = {
       name: formData.name,
       email: formData.email,
@@ -73,8 +88,8 @@ const BookingForm = () => {
           phone: "", // Reset phone
           idProofNumber: "", // Reset ID proof number
           idProofType: "", // Reset ID proof type
-          checkinDate: "",
-          checkoutDate: "",
+          checkinDate: null,
+          checkoutDate: null,
           select1: "",
           select2: "",
           select3: "",
