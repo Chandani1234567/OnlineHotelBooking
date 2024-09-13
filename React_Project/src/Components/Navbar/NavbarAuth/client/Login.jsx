@@ -72,7 +72,7 @@ const Login = ({ closeLogin, toggleForm }) => {
           {!forgotPassword ? (
             <form onSubmit={handleSubmit}>
               <h2>Login</h2>
-              {error && <p className="error_message">{error}</p>}
+              {error && <p className="error_message" style={{ color: "red" }}>{error}</p>}
               <div className="input_box">
                 <input
                   type="email"

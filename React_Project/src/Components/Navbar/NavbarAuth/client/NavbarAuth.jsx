@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import Login from "./Login";
 import Signup from "./Signup";
 import axios from "axios";
@@ -9,14 +11,13 @@ const NavbarAuth = () => {
   const [showSignup, setShowSignup] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
 
-  // Check user authentication status on component mount and whenever the token changes
   useEffect(() => {
     const checkUser = () => {
       const token = localStorage.getItem("authToken");
       setLoggedIn(!!token);
     };
     checkUser();
-  }, []); // Empty dependency array means this runs once on component mount
+  }, []);
 
   const closeLogin = () => {
     setShowLogin(false);
@@ -35,17 +36,16 @@ const NavbarAuth = () => {
 
   const handleLogout = async () => {
     try {
-      // Make sure the URL is correct and matches your server configuration
       await axios.post(
         "http://localhost:5000/logout",
         {},
         {
-          withCredentials: true, // Include credentials if needed
+          withCredentials: true,
         }
       );
       localStorage.removeItem("authToken");
       setLoggedIn(false);
-      window.location.reload(); // Reload the page after logout
+      window.location.reload();
     } catch (error) {
       console.error("Logout error:", error);
     }
@@ -53,13 +53,14 @@ const NavbarAuth = () => {
 
   return (
     <>
-      <button
-        className="LoginButton"
+      <a
         id="form-open"
         onClick={loggedIn ? handleLogout : openLogin}
+        className="auth-button"
       >
-        <i className="fas fa-user">{loggedIn ? " LOGOUT" : " LOGIN"}</i>
-      </button>
+        <FontAwesomeIcon icon={loggedIn ? faSignOutAlt : faUser} />
+        {loggedIn ? "LOGOUT" : "User"}
+      </a>
 
       {showLogin && <Login closeLogin={closeLogin} toggleForm={toggleForm} />}
       {showSignup && <Signup closeLogin={closeLogin} toggleForm={toggleForm} />}

@@ -20,5 +20,83 @@
       padding: 10px 0;
     }
   }
-  
-  
+  /* Navbar.css */
+.nav-item .admin-icon {
+  color: #fff; /* White color for the icon */
+  font-size: 24px; /* Adjust the icon size as needed */
+  margin-right: 8px; /* Space between the icon and text */
+}
+/* Navbar.css */
+.navbar .navbar-nav {
+  display: flex;
+  align-items: center; 
+}
+
+.navbar-auth {
+  margin-left:250px; 
+}
+.admin-icon {
+  color: #fff; 
+  font-size: 24px; 
+}
+
+
+.nav-item {
+  margin-right: 15px; 
+}
+/* NavbarAuth.css */
+.auth-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #ffffff; /* White color for text and icons */
+  background-color: transparent; /* Adjust background as needed */
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.auth-button .fa {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+
+.auth-button:hover {
+  color: #ddd; 
+}
+
+/* Styling for the admin icon in the Navbar */
+.admin-icon {
+  color: #ffffff; /* White color for admin icon */
+  font-size: 24px; /* Adjust size as needed */
+}
+/* Navbar.css */
+.admin-icon {
+  color: #ffffff; /* White color for the admin icon */
+  font-size: 24px; /* Adjust size as needed */
+}
+
+ /* Navbar.css */
+
+/* Ensure the admin icon and text are white */
+.admin-icon {
+  color: #ffffff; /* White color for the admin icon */
+  font-size: 24px; /* Adjust size as needed */
+}
+
+.nav-item.nav-link {
+  color: #ffffff; /* White color for the nav links */
+  display: flex;
+  align-items: center; /* Align icon and text vertically */
+}
+
+.nav-item.nav-link:hover {
+  color: #ddd; /* Light color on hover if desired */
+}
+
+/* Adjust spacing between admin icon and text */
+.nav-item.nav-link i {
+  margin-right: 5px; /* Space between icon and text */
+}
+ 

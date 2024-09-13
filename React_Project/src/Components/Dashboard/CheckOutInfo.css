@@ -1,0 +1,37 @@
+.checkout-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .checkout-container h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .checkout-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .checkout-table th, .checkout-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .checkout-table th {
+    background-color: #f2f2f2;
+  }
+  
+  .checkout-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .checkout-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .checkout-table td {
+    white-space: nowrap;
+  }
+  

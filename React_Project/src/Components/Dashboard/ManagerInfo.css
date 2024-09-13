@@ -1,0 +1,50 @@
+.manager-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .manager-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    text-align: center;
+    color: #333;
+  }
+  
+  .manager-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .manager-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .manager-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .manager-card h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: #FEA116;
+  }
+  
+  .manager-card p {
+    font-size: 1em;
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .manager-card strong {
+    color: #333;
+  }
+  

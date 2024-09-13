@@ -3,11 +3,9 @@
 .LoginButton {
   margin-top: 10px;
   margin-bottom: 10px;
-  margin-right: 50px;
-  color: #fff;
+  margin-right: 10px;
+  color: black;
 }
-
-
 
 .LoginButton {
   padding: 6px 24px;
@@ -20,10 +18,41 @@
 .LoginButton:active {
   transform: scale(0.98);
 }
+/* NavbarAuth.css */
 
-.LoginButton:hover {
-  background-color: black;
+.auth-button .fa-user{
+  color: #fff; /* White color for the icon */
+  font-size: 24px; /* Adjust the icon size as needed */
+  margin-right: 8px; /* Space between the icon and text */
 }
 
 
+
+/* NavbarAuth.css */
+.auth-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 15px;
+  font-size: 16px;
+  color: #ffffff; /* White color for text and icons */
+  background-color: transparent; /* Adjust background as needed */
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.auth-button .fa {
+  margin-right: 8px; /* Space between icon and text */
+}
+
+/* Additional styling if needed for the button on hover */
+.auth-button:hover {
+  color: #ddd; /* Light color on hover if desired */
+}
+
+/* Styling for the admin icon in the Navbar */
+.admin-icon {
+  color: #ffffff; /* White color for admin icon */
+  font-size: 24px; /* Adjust size as needed */
+}
 
