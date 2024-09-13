@@ -12,27 +12,84 @@ const BookingForm = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    phone: "", // New field
-    idProofNumber: "", // New field
-    idProofType: "", // New field
+    phone: "",
+    idProofNumber: "",
+    idProofType: "",
     checkinDate: null,
     checkoutDate: null,
     select1: "",
     select2: "",
-    select3: "", // Initially empty, will be updated in useEffect
+    select3: "",
     message: "",
   });
 
-   // Use useEffect to set the roomType into formData.select3 when the component mounts
-   useEffect(() => {
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
     if (roomType) {
       setFormData((prevState) => ({
         ...prevState,
-        select3: roomType, // Initialize room type with value from location.state
+        select3: roomType,
       }));
     }
   }, [roomType]);
 
+  const validateForm = () => {
+    const newErrors = {};
+  
+    // Name validation
+    if (!formData.name) newErrors.name = "Name is required.";
+  
+    // Email validation
+    if (!formData.email || !/.+@.+\..+/.test(formData.email)) {
+      newErrors.email = "Please enter a valid email address.";
+    }
+  
+    // Phone validation (10 digits)
+    if (!formData.phone || !/^\d{10}$/.test(formData.phone)) {
+      newErrors.phone = "Please enter a valid 10-digit phone number.";
+    }
+  
+    // ID Proof Type validation
+    if (!formData.idProofType) {
+      newErrors.idProofType = "ID Proof Type is required.";
+    }
+  
+    // Aadhar number validation (only if Aadhar is selected)
+    if (formData.idProofType === "Aadhar Card" && !/^\d{12}$/.test(formData.idProofNumber)) {
+      newErrors.idProofNumber = "Please enter a valid 12-digit Aadhar number.";
+    }
+  
+    // PAN card validation (only if PAN is selected)
+    if (formData.idProofType === "PAN Card" && !/^[A-Z]{5}[0-9]{4}[A-Z]{1}$/.test(formData.idProofNumber)) {
+      newErrors.idProofNumber = "Please enter a valid PAN number.";
+    }
+  
+    // Date validations
+    if (!formData.checkinDate) newErrors.checkinDate = "Check-in date is required.";
+    if (!formData.checkoutDate) newErrors.checkoutDate = "Check-out date is required.";
+    if (formData.checkinDate && formData.checkoutDate && formData.checkoutDate <= formData.checkinDate) {
+      newErrors.checkoutDate = "Check-out date must be after check-in date.";
+    }
+  
+    // Adults validation
+    if (!formData.select1 || parseInt(formData.select1) < 1) {
+      newErrors.select1 = "At least one adult is required.";
+    }
+  
+    // Room type validation
+    if (!formData.select3) newErrors.select3 = "Room type is required.";
+  
+    setErrors(newErrors);
+  
+    // Show all error messages in an alert
+    if (Object.keys(newErrors).length > 0) {
+      alert(Object.values(newErrors).join("\n"));
+    }
+  
+    return Object.keys(newErrors).length === 0;
+  };
+  
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevState) => ({
@@ -50,18 +107,15 @@ const BookingForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
-// Check if roomType (formData.select3) is empty before submission
-if (!formData.select3) {
-  alert("Please select a room type.");
-  return;
-}
+
+    if (!validateForm()) return; // Stop submission if form is invalid
+
     const bookingData = {
       name: formData.name,
       email: formData.email,
-      phone: formData.phone, // New field
-      idProofNumber: formData.idProofNumber, // New field
-      idProofType: formData.idProofType, // New field
+      phone: formData.phone,
+      idProofNumber: formData.idProofNumber,
+      idProofType: formData.idProofType,
       checkinDate: formData.checkinDate,
       checkoutDate: formData.checkoutDate,
       adults: parseInt(formData.select1),
@@ -69,8 +123,6 @@ if (!formData.select3) {
       roomType: formData.select3,
       message: formData.message,
     };
-
-    console.log(bookingData);
 
     try {
       const response = await axios.post(
@@ -80,14 +132,12 @@ if (!formData.select3) {
 
       if (response.status === 201) {
         alert("Booking successful!");
-
-        // Reset the form fields after successful submission
         setFormData({
           name: "",
           email: "",
-          phone: "", // Reset phone
-          idProofNumber: "", // Reset ID proof number
-          idProofType: "", // Reset ID proof type
+          phone: "",
+          idProofNumber: "",
+          idProofType: "",
           checkinDate: null,
           checkoutDate: null,
           select1: "",
@@ -98,9 +148,7 @@ if (!formData.select3) {
       }
     } catch (err) {
       console.error("Error submitting booking:", err);
-
-      const errorMessage =
-        err.response?.data?.message || "An error occurred. Please try again.";
+      const errorMessage = err.response?.data?.message || "An error occurred. Please try again.";
       alert(`An error occurred: ${errorMessage}`);
     }
   };
@@ -129,7 +177,6 @@ if (!formData.select3) {
               onChange={handleInputChange}
             />
           </div>
-
           <div className="col-md-6">
             <select
               className="form-select"
@@ -142,7 +189,6 @@ if (!formData.select3) {
               <option value="PAN Card">PAN Card</option>
             </select>
           </div>
-
           <div className="col-md-6">
             <input
               type="text"
@@ -153,7 +199,6 @@ if (!formData.select3) {
               onChange={handleInputChange}
             />
           </div>
-
           <div className="col-md-6">
             <DatePicker
               selected={formData.checkinDate}
@@ -175,7 +220,7 @@ if (!formData.select3) {
               className="form-control"
               id="checkout"
               dateFormat="dd/MM/yyyy"
-              minDate={formData.checkinDate ? formData.checkinDate : new Date()}
+              minDate={formData.checkinDate || new Date()}
               showMonthDropdown
               showYearDropdown
               dropdownMode="select"
