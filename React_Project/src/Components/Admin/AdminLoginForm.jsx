@@ -10,6 +10,7 @@ const AdminLoginForm = () => {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [forgotPassword, setForgotPassword] = useState(false);
 
   const handlePasswordToggle = () => {
     setPasswordVisible(!passwordVisible);
@@ -58,48 +59,90 @@ const AdminLoginForm = () => {
         <form onSubmit={handleSubmit} className="admin-login-form">
           <h2>Admin Login</h2>
           {error && <p className="error-message" style={{ color: "red" }}>{error}</p>}
-          <div className="input-box">
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="Enter your email"
-              required
-            />
-            <i className="fa-solid fa-envelope email-icon"></i>
-          </div>
-          <div className="input-box">
-            <input
-              type={passwordVisible ? "text" : "password"}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Enter your password"
-              required
-            />
-            <i className="fa-solid fa-lock password-icon"></i>
-            <i
-              className={`fa-solid fa-eye${passwordVisible ? "" : "-slash"} pw-hide`}
-              onClick={handlePasswordToggle}
-            ></i>
-          </div>
-          <button type="submit" className="button" disabled={loading}>
-            {loading ? "Logging in..." : "Login as Admin"}
-          </button>
-          <div className="additional-links">
-            <div className="signup-link">
-              Don't have an account?{" "}
-              <a href="/signup" id="signup">
-                Signup
-              </a>
-            </div>
-          </div>
+          {!forgotPassword ? (
+            <>
+              <div className="input-box">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                />
+                <i className="fa-solid fa-envelope email-icon"></i>
+              </div>
+              <div className="input-box">
+                <input
+                  type={passwordVisible ? "text" : "password"}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                  required
+                />
+                <i className="fa-solid fa-lock password-icon"></i>
+                <i
+                  className={`fa-solid fa-eye${passwordVisible ? "" : "-slash"} pw-hide`}
+                  onClick={handlePasswordToggle}
+                ></i>
+              </div>
+              <button type="submit" className="button" disabled={loading}>
+                {loading ? "Logging in..." : "Login as Admin"}
+              </button>
+              <div className="additional-links">
+                <a
+                  href="#"
+                  className="forgot-password-link"
+                  onClick={() => setForgotPassword(true)}
+                >
+                  Forgot password?
+                </a>
+                <div className="signup-link">
+                  Don't have an account?{" "}
+                  <a href="/signup" id="signup">
+                    Signup
+                  </a>
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <h2>Forgot Password</h2>
+              <p>Enter your email to receive a password reset link.</p>
+              {error && <p className="error-message">{error}</p>}
+              <div className="input-box">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  required
+                />
+                <i className="fa-solid fa-envelope email-icon"></i>
+              </div>
+              <button
+                type="button"
+                className="button"
+                onClick={handleForgotPassword}
+                disabled={loading}
+              >
+                {loading ? "Sending..." : "Send Reset Link"}
+              </button>
+              <button
+                type="button"
+                className="button"
+                onClick={() => setForgotPassword(false)}
+              >
+                Back to Login
+              </button>
+            </>
+          )}
         </form>
       ) : (
         <div className="admin-logged-in">
           <p>You are logged in as Admin.</p>
-          <h3 className="success" >
-           Successfully
-          </h3>
+          <p class="success" >
+         Successfully
+          </p>
         </div>
       )}
     </div>
