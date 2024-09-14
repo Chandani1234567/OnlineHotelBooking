@@ -39,28 +39,27 @@ router.post("/admins", async (req, res) => {
   }
 });
 
-
 // Admin login route
 router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    const admin = await Admin.findOne({ email });
-    if (!admin) {
-      return res.status(401).json({ error: "Invalid email or password" });
+    const { email, password } = req.body;
+  
+    try {
+      const admin = await Admin.findOne({ email });
+      if (!admin) {
+        return res.status(401).json({ error: "Invalid email or password" });
+      }
+  
+      const isPasswordValid = await bcrypt.compare(password, admin.password);
+      if (!isPasswordValid) {
+        return res.status(401).json({ error: "Invalid email or password" });
+      }
+      const token = jwt.sign({ id: admin._id }, SECRET_KEY, { expiresIn: "1h" });
+      res.json({ token });
+    } catch (error) {
+      console.error("Error during admin login:", error);
+      res.status(500).json({ error: "Internal server error" });
     }
-
-    const isPasswordValid = await bcrypt.compare(password, admin.password);
-    if (!isPasswordValid) {
-      return res.status(401).json({ error: "Invalid email or password" });
-    }
-
-    const token = jwt.sign({ id: admin._id }, SECRET_KEY, { expiresIn: "1h" });
-    res.json({ token });
-  } catch (error) {
-    console.error("Error during admin login:", error);
-    res.status(500).json({ error: "Internal server error" });
-  }
-});
+  });
+  
 
 export default router;

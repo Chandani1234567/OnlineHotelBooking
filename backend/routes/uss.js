@@ -1,39 +1,3 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
-import jwt from 'jsonwebtoken';
-import cors from 'cors';
-import config from 'config';
-import dotenv from 'dotenv';
-import User from './models/User.js'; // Ensure this path is correct
-
-dotenv.config(); // Ensure dotenv is configured early
-
-const app = express();
-
-const JWT_SECRET = "Y8yChgRFGO+niH3Nz7+Nvp/P86VUFVRbmoUEAbCU5JE="
-
-// CORS configuration
-const corsOptions = {
-    origin: 'http://localhost:5173', // Your frontend URL
-    credentials: true, // Include credentials if you're sending cookies or tokens
-    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers in requests
-    methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
-};
-
-app.use(cors(corsOptions));
-app.use(express.json());
-
-// MongoDB connection
-const mongoURI = "mongodb+srv://aamankumar4958:UdPYCAnM3erkZ3W3@cluster0.akoiaax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-if (!mongoURI) {
-    console.error('MONGO_URI is not defined. Please check your config/default.json file.');
-    process.exit(1); // Exit the application if mongoURI is not defined
-}
-
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log('MongoDB connected'))
-    .catch(err => console.log('MongoDB connection error:', err));
 
 // User Authentication Routes
 app.post('/signup', async (req, res) => {
@@ -90,6 +54,3 @@ app.post('/reset-password', async (req, res) => {
     const { email } = req.body;
     res.send('Password reset functionality');
 });
-
-const PORT = process.env.PORT || 4000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
