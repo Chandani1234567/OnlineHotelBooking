@@ -107,9 +107,9 @@ const BookingForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     if (!validateForm()) return; // Stop submission if form is invalid
-
+  
     const bookingData = {
       name: formData.name,
       email: formData.email,
@@ -118,18 +118,18 @@ const BookingForm = () => {
       idProofType: formData.idProofType,
       checkinDate: formData.checkinDate,
       checkoutDate: formData.checkoutDate,
-      adults: parseInt(formData.select1),
-      children: parseInt(formData.select2) || 0,
-      roomType: formData.select3,
+      adults: parseInt(formData.select1), // Mapping to adults
+      children: parseInt(formData.select2) || 0, // Mapping to children
+      roomType: formData.select3, // Mapping to roomType
       message: formData.message,
     };
-
+  
     try {
       const response = await axios.post(
         "https://onlinehotelbooking.onrender.com/api/bookings",
         bookingData
       );
-
+  
       if (response.status === 201) {
         alert("Booking successful!");
         setFormData({
@@ -152,6 +152,7 @@ const BookingForm = () => {
       alert(`An error occurred: ${errorMessage}`);
     }
   };
+  
 
   return (
     <div className="booking-form">
