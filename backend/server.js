@@ -24,9 +24,29 @@ mongoose.connect(process.env.MONGO_CONN, {
 .then(() => console.log('Connected to MongoDB'))
 .catch((error) => console.error('Error connecting to MongoDB:', error));
 
+
+
+
+
+
+
+
+
 // Use imported routes
 app.use('/api', authRoutes);
 app.use('/api/bookings', bookingRoutes);
+
+
+
+
+
+
+
+
+
+
+
+
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
