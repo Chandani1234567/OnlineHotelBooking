@@ -169,7 +169,7 @@ const App = () => {
           <Route path="/team" element={<TeamSection />} />
           <Route path="/testimonial" element={<Testimonials />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/book-a-room" element={<Book_a_room />} />
+          <Route path="https://react-project-6rl2.onrender.com//book-a-room" element={<Book_a_room />} />
           <Route path="/explore" element={<Explore />} />
           <Route path="/room/:roomType" element={<Room />} />
           <Route path="/apartment" element={<Apartment />} />
