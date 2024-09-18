@@ -126,7 +126,7 @@ const BookingForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/bookings",
+        "https://onlinehotelbooking.onrender.com/api/bookings",
         bookingData
       );
 
