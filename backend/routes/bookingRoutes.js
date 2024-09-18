@@ -1,9 +1,10 @@
+// BookingRoutes.js
 import express from 'express';
 const router = express.Router();
 import Booking from '../models/Booking.js'; // Adjust the path as per your project structure
 
-// POST /bookings - Create a new booking
-router.post('/api/bookings', async (req, res) => {
+// POST /api/bookings - Create a new booking
+router.post('/', async (req, res) => { // Remove /api from here
   console.log(req.body); // Inspect incoming data
   try {
     const booking = new Booking(req.body);

@@ -289,6 +289,7 @@ const BookingForm = () => {
             <button
               className="btn BackgroundColor text-white w-100 py-3"
               type="submit"
+              onSubmit={handleSubmit}
             >
               Book Now
             </button>
