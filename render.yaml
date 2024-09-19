@@ -1,8 +1,0 @@
-services:
-  - type: web
-    name: my-react-app
-    env: static
-    static:
-      buildCommand: npm run build
-      publishDirectory: ./build
-      cleanUrls: true # Ensures that all routes are served correctly

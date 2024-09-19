@@ -28,6 +28,20 @@ const Navbar = () => {
     window.location.href = "/login";
   };
 
+  // Function to determine if any user (user or admin) is logged in
+  const isLoggedIn = () => {
+    return isUserLoggedIn() || isAdminLoggedIn();
+  };
+
+  // Function to handle logout (for user or admin)
+  const handleLogout = () => {
+    if (isUserLoggedIn()) {
+      handleUserLogout();
+    } else if (isAdminLoggedIn()) {
+      handleAdminLogout();
+    }
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
       <a href="index.html" className="navbar-brand d-block d-lg-none">
@@ -79,7 +93,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        { <div className="navbar-auth">
+        <div className="navbar-auth">
           {isLoggedIn() ? (
             <div className="admin-logged-in">
               <p className="button" onClick={handleLogout}>
@@ -89,9 +103,9 @@ const Navbar = () => {
           ) : (
             <NavbarAuth />
           )}
-        </div> }
+        </div>
         <Link to="/login" className="nav-item nav-link">
-          <i className="fas fa-user-shield admin-icon" onClick={handleLogout} ></i> Admin
+          <i className="fas fa-user-shield admin-icon"></i> Admin
         </Link>
       </div>
     </nav>
