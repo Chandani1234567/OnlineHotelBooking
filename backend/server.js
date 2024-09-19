@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 // Enable CORS with the appropriate origin
 app.use(cors({
-  origin: '*'
+  origin: 'https://react-project-6rl2.onrender.com'
 }));
 
 app.use(express.json());
@@ -28,6 +28,14 @@ mongoose.connect(process.env.MONGO_CONN, {
 })
 .then(() => console.log('Connected to MongoDB'))
 .catch((error) => console.error('Error connecting to MongoDB:', error));
+
+
+
+
+
+
+
+
 
 // Use imported routes
 app.use('/api', authRoutes);
@@ -57,6 +65,18 @@ app.post("/customer", async (req, res) => {
 //     res.status(500).send("Server Error");
 //   }
 // });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 app.listen(PORT, () => {
