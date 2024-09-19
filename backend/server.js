@@ -18,8 +18,15 @@ const PORT = process.env.PORT || 5000;
 //   origin: 'https://react-project-6rl2.onrender.com'
 // }));
 
+const allowedOrigins = ['https://react-project-6rl2.onrender.com', 'http://localhost:3000']; // Add your frontend URLs here
 app.use(cors({
-  origin: 'https://react-project-6rl2.onrender.com'
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
 }));
 
 
