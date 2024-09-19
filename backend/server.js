@@ -14,20 +14,10 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Enable CORS with the appropriate origin
-// app.use(cors({
-//   origin: 'https://react-project-6rl2.onrender.com'
-// }));
-
-const allowedOrigins = ['https://react-project-6rl2.onrender.com', 'http://localhost:3000']; // Add your frontend URLs here
 app.use(cors({
-  origin: (origin, callback) => {
-    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
+  origin: 'https://react-project-6rl2.onrender.com'
 }));
+
 
 
 app.use(express.json());
