@@ -1,30 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import NavbarAuth from "./NavbarAuth/client/NavbarAuth";
 import "./Navbar.css"; // Ensure you import the CSS file
 
 const Navbar = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-  // Simulate checking if the user is logged in (can be from context or a more secure approach)
-  useEffect(() => {
-    // Replace this with real authentication logic, e.g., check if there's a valid session
-    const checkAuth = () => {
-      // Mock example, replace with real auth logic
-      const token = /* retrieve token from a secure source like cookies or context */;
-      setIsAuthenticated(!!token);
-    };
-    
-    checkAuth();
-  }, []);
-
-  const handleLogout = () => {
-    // Add logic to clear the auth state, session, etc.
-    setIsAuthenticated(false);
-    // Redirect to login page after logout
-    window.location.href = "/login";
-  };
-
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
       <a href="index.html" className="navbar-brand d-block d-lg-none">
@@ -78,22 +57,13 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-auth">
-          {isAuthenticated ? (
-            <div className="admin-logged-in">
-              <p className="button" onClick={handleLogout}>
-                Logout
-              </p>
-            </div>
-          ) : (
-            <NavbarAuth />
-          )}
+          {/* Add login/signup component if needed */}
+          <NavbarAuth />
         </div>
 
-        {isAuthenticated && (
-          <Link to="/dashboard" className="nav-item nav-link">
-            <i className="fas fa-user-shield admin-icon"></i> Admin
-          </Link>
-        )}
+        <Link to="/login" className="nav-item nav-link">
+          <i className="fas fa-user-shield admin-icon"></i> Admin
+        </Link>
       </div>
     </nav>
   );
