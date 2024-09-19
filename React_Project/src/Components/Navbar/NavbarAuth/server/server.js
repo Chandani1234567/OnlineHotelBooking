@@ -15,7 +15,7 @@ const JWT_SECRET = "Y8yChgRFGO+niH3Nz7+Nvp/P86VUFVRbmoUEAbCU5JE="
 
 // CORS configuration
 const corsOptions = {
-    origin: 'http://localhost:5173', // Your frontend URL
+    origin: 'https://react-project-6rl2.onrender.com', // Your frontend URL
     credentials: true, // Include credentials if you're sending cookies or tokens
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers in requests
     methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
@@ -25,7 +25,7 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 // MongoDB connection
-const mongoURI = "mongodb+srv://aamankumar4958:UdPYCAnM3erkZ3W3@cluster0.akoiaax.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const mongoURI = config.get('mongoURI');
 if (!mongoURI) {
     console.error('MONGO_URI is not defined. Please check your config/default.json file.');
     process.exit(1); // Exit the application if mongoURI is not defined
@@ -91,5 +91,5 @@ app.post('/reset-password', async (req, res) => {
     res.send('Password reset functionality');
 });
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

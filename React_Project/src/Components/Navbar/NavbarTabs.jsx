@@ -67,7 +67,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="navbar-auth">
+        { <div className="navbar-auth">
           {isLoggedIn() ? (
             <div className="admin-logged-in">
               <p className="button" onClick={handleLogout}>
@@ -77,9 +77,9 @@ const Navbar = () => {
           ) : (
             <NavbarAuth />
           )}
-        </div>
+        </div> }
         <Link to="/login" className="nav-item nav-link">
-          <i className="fas fa-user-shield admin-icon" onClick={handleLogout}></i> Admin
+          <i className="fas fa-user-shield admin-icon" onClick={handleLogout} ></i> Admin
         </Link>
       </div>
     </nav>
