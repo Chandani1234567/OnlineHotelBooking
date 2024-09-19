@@ -13,7 +13,64 @@ body {
   color: #fff;
   width: 250px;
   padding: 20px;
-  height: 200vh;
+  height: 200vh; /* Ensures the sidebar height is enough to accommodate all items */
+}
+
+.dashboard-sidebar h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.dashboard-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dashboard-sidebar ul li {
+  margin-bottom: 10px;
+  color: #FEA116;
+}
+
+.dashboard-sidebar ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.dashboard-sidebar ul li a:hover {
+  text-decoration: underline;
+}
+
+.dashboard-main-content {
+  flex-grow: 1;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+
+.dashboard-main-content h2 {
+  font-size: 28px;
+  color: #333;
+}
+
+.dashboard-main-content p {
+  font-size: 16px;
+  color: #666;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.dashboard-container {
+  display: flex;
+}
+
+.dashboard-sidebar {
+  background-color: #333;
+  color: #fff;
+  width: 250px;
+  padding: 20px;
+  height: 200vh; /* Ensures the sidebar height is enough to accommodate all items */
 }
 
 .dashboard-sidebar h1 {

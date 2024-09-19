@@ -1,0 +1,44 @@
+.booking-info {
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .booking-info h2 {
+    font-size: 28px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .booking-info .error {
+    color: red;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .booking-info table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .booking-info table, th, td {
+    border: 1px solid #ddd;
+  }
+  
+  .booking-info th, td {
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .booking-info th {
+    background-color: #333;
+    color: white;
+  }
+  
+  .booking-info tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .booking-info tr:hover {
+    background-color: #ddd;
+  }
+  

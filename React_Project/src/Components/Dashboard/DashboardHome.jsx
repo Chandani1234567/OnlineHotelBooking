@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './DashboardHome.css';
-import NewCustomerForm from './NewCustomerForm'; // Import the new form component
+import './DashboardHome.css'; // Import the CSS file
+import NewCustomerForm from './NewCustomerForm'; 
 import RoomsPage from './RoomsPage';
 import AllEmployeeInfo from './AllEmployeeInfo';
 import CheckOutInfo from './CheckOutInfo';
@@ -9,6 +9,7 @@ import ManagerInfo from './ManagerInfo';
 import UpdateStatus from './UpdateStatus';
 import UpdateRoomStatus from './UpdateRoomStatus';
 import PickUpService from './PickUpService';
+import BookingInfo from './BookingInfo'; // Adjust path if necessary
 
 const DashboardHome = () => {
   const [activeSection, setActiveSection] = useState('welcome');
@@ -33,6 +34,7 @@ const DashboardHome = () => {
           <li><a href="#" onClick={() => handleNavigation('updateRoomStatus')}>Update Room Status</a></li>
           <li><a href="#" onClick={() => handleNavigation('pickupService')}>Pick up service</a></li>
           <li><a href="#" onClick={() => handleNavigation('searchRoom')}>Search Room</a></li>
+          <li><a href="#" onClick={() => handleNavigation('bookinginfo')}>Booking Info</a></li>
           <li><a href="#" onClick={() => handleNavigation('logout')}>Logout</a></li>
         </ul>
       </div>
@@ -43,18 +45,19 @@ const DashboardHome = () => {
             <p>Select an option from the sidebar to view more details.</p>
           </>
         )}
-        {activeSection === 'newCustomer' && <NewCustomerForm />} {/* Render the NewCustomerForm here */}
+        {activeSection === 'newCustomer' && <NewCustomerForm />}
         {activeSection === 'rooms' && <RoomsPage />}
-        {activeSection === 'department' && <DepartmentInfo/>}
+        {activeSection === 'department' && <DepartmentInfo />}
         {activeSection === 'employeeInfo' && <AllEmployeeInfo />}
-        {activeSection === 'customerInfo' && <CheckOutInfo />}
+        {activeSection === 'customerInfo' && <div>Customer Info Content</div>}
         {activeSection === 'managerInfo' && <ManagerInfo />}
         {activeSection === 'checkOut' && <CheckOutInfo />}
         {activeSection === 'updateStatus' && <UpdateStatus />}
         {activeSection === 'updateRoomStatus' && <UpdateRoomStatus />}
         {activeSection === 'pickupService' && <PickUpService />}
         {activeSection === 'searchRoom' && <div>Search Room Content</div>}
-        {activeSection === 'logout' && <div>Logout Content</div>}
+        {activeSection === 'bookinginfo' && <BookingInfo />}
+        {activeSection === 'logout' && <div>Logging out...</div>}
       </main>
     </div>
   );

@@ -6,7 +6,7 @@ const Dashboard = () => {
     <div>
       <header className="header">
         <div className="left">
-          <a href="/">Hotel Management</a>          
+          <a href="/">Hotel Management</a>
         </div>
         <div className="right">
         <a href="/dashboardhome">Admin</a>

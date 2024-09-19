@@ -11,6 +11,7 @@ const AdminLoginForm = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [forgotPassword, setForgotPassword] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handlePasswordToggle = () => {
     setPasswordVisible(!passwordVisible);
@@ -23,14 +24,15 @@ const AdminLoginForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/login",
+        "http://localhost:5000/api/login", // Ensure this endpoint is admin-specific
         { email, password },
         { headers: { "Content-Type": "application/json" } }
       );
 
       const { token } = response.data;
       if (token) {
-        localStorage.setItem("authToken", token);
+        localStorage.setItem("adminToken", token);
+        setIsLoggedIn(true);
         // Redirect to dashboard or any other authenticated route
         window.location.href = "/dashboard";
       }
@@ -42,20 +44,16 @@ const AdminLoginForm = () => {
     }
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem("authToken");
-    // Redirect to login page after logout
-    window.location.href = "/login";
-  };
+ 
 
-  // Function to check if user is logged in based on token existence
-  const isLoggedIn = () => {
-    return !!localStorage.getItem("authToken");
+  // Function to check if admin is logged in based on admin token existence
+  const isAdminLoggedIn = () => {
+    return !!localStorage.getItem("adminToken");
   };
 
   return (
     <div className="admin-login-form-container">
-      {!isLoggedIn() ? (
+      {!isAdminLoggedIn() ? (
         <form onSubmit={handleSubmit} className="admin-login-form">
           <h2>Admin Login</h2>
           {error && <p className="error-message" style={{ color: "red" }}>{error}</p>}
@@ -89,13 +87,7 @@ const AdminLoginForm = () => {
                 {loading ? "Logging in..." : "Login as Admin"}
               </button>
               <div className="additional-links">
-                <a
-                  href="#"
-                  className="forgot-password-link"
-                  onClick={() => setForgotPassword(true)}
-                >
-                  Forgot password?
-                </a>
+              
                 <div className="signup-link">
                   Don't have an account?{" "}
                   <a href="/signup" id="signup">
@@ -140,9 +132,7 @@ const AdminLoginForm = () => {
       ) : (
         <div className="admin-logged-in">
           <p>You are logged in as Admin.</p>
-          <p class="success" >
-         Successfully
-          </p>
+          <p className="success">Successfully logged in.</p>
         </div>
       )}
     </div>
