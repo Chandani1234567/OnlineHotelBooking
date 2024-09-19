@@ -5,41 +5,15 @@ import "./Navbar.css"; // Ensure you import the CSS file
 
 const Navbar = () => {
   // Function to check if user is logged in based on token existence
-  const isUserLoggedIn = () => {
+  const isLoggedIn = () => {
     return !!localStorage.getItem("authToken");
   };
 
-  // Function to check if admin is logged in based on admin token
-  const isAdminLoggedIn = () => {
-    return !!localStorage.getItem("adminToken");
-  };
-
-  // Function to handle user logout
-  const handleUserLogout = () => {
-    localStorage.removeItem("authToken");
-    // Redirect to login page after user logout
-    window.location.href = "/login";
-  };
-
-  // Function to handle admin logout
-  const handleAdminLogout = () => {
-    localStorage.removeItem("adminToken");
-    // Redirect to admin login page after admin logout
-    window.location.href = "/login";
-  };
-
-  // Function to determine if any user (user or admin) is logged in
-  const isLoggedIn = () => {
-    return isUserLoggedIn() || isAdminLoggedIn();
-  };
-
-  // Function to handle logout (for user or admin)
+  // Function to handle logout
   const handleLogout = () => {
-    if (isUserLoggedIn()) {
-      handleUserLogout();
-    } else if (isAdminLoggedIn()) {
-      handleAdminLogout();
-    }
+    localStorage.removeItem("authToken");
+    // Redirect to login page after logout
+    window.location.href = "/login";
   };
 
   return (
@@ -93,7 +67,7 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        <div className="navbar-auth">
+        { <div className="navbar-auth">
           {isLoggedIn() ? (
             <div className="admin-logged-in">
               <p className="button" onClick={handleLogout}>
@@ -103,9 +77,9 @@ const Navbar = () => {
           ) : (
             <NavbarAuth />
           )}
-        </div>
+        </div> }
         <Link to="/login" className="nav-item nav-link">
-          <i className="fas fa-user-shield admin-icon"></i> Admin
+          <i className="fas fa-user-shield admin-icon" onClick={handleLogout} ></i> Admin
         </Link>
       </div>
     </nav>
