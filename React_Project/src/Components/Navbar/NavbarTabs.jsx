@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import NavbarAuth from "./NavbarAuth/client/NavbarAuth";
 import "./Navbar.css"; // Ensure you import the CSS file
 
 const Navbar = () => {
-  // Function to check if user is logged in based on token existence
-  const isLoggedIn = () => {
-    return !!localStorage.getItem("authToken");
-  };
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  // Function to handle logout
+  // Simulate checking if the user is logged in (can be from context or a more secure approach)
+  useEffect(() => {
+    // Replace this with real authentication logic, e.g., check if there's a valid session
+    const checkAuth = () => {
+      // Mock example, replace with real auth logic
+      const token = /* retrieve token from a secure source like cookies or context */;
+      setIsAuthenticated(!!token);
+    };
+    
+    checkAuth();
+  }, []);
+
   const handleLogout = () => {
-    localStorage.removeItem("authToken");
+    // Add logic to clear the auth state, session, etc.
+    setIsAuthenticated(false);
     // Redirect to login page after logout
     window.location.href = "/login";
   };
@@ -67,8 +76,9 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        { <div className="navbar-auth">
-          {isLoggedIn() ? (
+
+        <div className="navbar-auth">
+          {isAuthenticated ? (
             <div className="admin-logged-in">
               <p className="button" onClick={handleLogout}>
                 Logout
@@ -77,10 +87,13 @@ const Navbar = () => {
           ) : (
             <NavbarAuth />
           )}
-        </div> }
-        <Link to="/login" className="nav-item nav-link">
-          <i className="fas fa-user-shield admin-icon" onClick={handleLogout} ></i> Admin
-        </Link>
+        </div>
+
+        {isAuthenticated && (
+          <Link to="/dashboard" className="nav-item nav-link">
+            <i className="fas fa-user-shield admin-icon"></i> Admin
+          </Link>
+        )}
       </div>
     </nav>
   );
