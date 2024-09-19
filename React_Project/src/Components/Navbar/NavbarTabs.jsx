@@ -1,9 +1,22 @@
+remove local storage
 import React from "react";
 import { Link } from "react-router-dom";
 import NavbarAuth from "./NavbarAuth/client/NavbarAuth";
 import "./Navbar.css"; // Ensure you import the CSS file
 
 const Navbar = () => {
+  // Function to check if user is logged in based on token existence
+  const isLoggedIn = () => {
+    return !!localStorage.getItem("authToken");
+  };
+
+  // Function to handle logout
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    // Redirect to login page after logout
+    window.location.href = "/login";
+  };
+
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
       <a href="index.html" className="navbar-brand d-block d-lg-none">
@@ -55,14 +68,19 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-
-        <div className="navbar-auth">
-          {/* Add login/signup component if needed */}
-          <NavbarAuth />
-        </div>
-
+        { <div className="navbar-auth">
+          {isLoggedIn() ? (
+            <div className="admin-logged-in">
+              <p className="button" onClick={handleLogout}>
+                Logout
+              </p>
+            </div>
+          ) : (
+            <NavbarAuth />
+          )}
+        </div> }
         <Link to="/login" className="nav-item nav-link">
-          <i className="fas fa-user-shield admin-icon"></i> Admin
+          <i className="fas fa-user-shield admin-icon" onClick={handleLogout} ></i> Admin
         </Link>
       </div>
     </nav>
