@@ -9,7 +9,7 @@ const About = () => {
   const navigate = useNavigate();
 
   const handleExplore = (event) => {
-    event.preventDefault();
+    
     navigate('/explore');
   };
 
