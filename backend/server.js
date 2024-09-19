@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 5000;
 // }));
 
 app.use(cors({
-  origin: '*'
+  origin: 'https://react-project-6rl2.onrender.com'
 }));
 
 
