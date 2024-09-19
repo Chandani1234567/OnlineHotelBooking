@@ -50,7 +50,7 @@ const Login = ({ closeLogin, toggleForm }) => {
 
     try {
       await axios.post(
-        "http://localhost:5000/forgot-password",
+        "http://localhost:4000/forgot-password",
         { email }, // Send data as JSON
         { headers: { "Content-Type": "application/json" } }
       );

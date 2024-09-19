@@ -5,14 +5,26 @@ import "./Navbar.css"; // Ensure you import the CSS file
 
 const Navbar = () => {
   // Function to check if user is logged in based on token existence
-  const isLoggedIn = () => {
+  const isUserLoggedIn = () => {
     return !!localStorage.getItem("authToken");
   };
 
-  // Function to handle logout
-  const handleLogout = () => {
+  // Function to check if admin is logged in based on admin token
+  const isAdminLoggedIn = () => {
+    return !!localStorage.getItem("adminToken");
+  };
+
+  // Function to handle user logout
+  const handleUserLogout = () => {
     localStorage.removeItem("authToken");
-    // Redirect to login page after logout
+    // Redirect to login page after user logout
+    window.location.href = "/login";
+  };
+
+  // Function to handle admin logout
+  const handleAdminLogout = () => {
+    localStorage.removeItem("adminToken");
+    // Redirect to admin login page after admin logout
     window.location.href = "/login";
   };
 
@@ -67,10 +79,11 @@ const Navbar = () => {
             </div>
           </div>
         </div>
+
         <div className="navbar-auth">
-          {isLoggedIn() ? (
-            <div className="admin-logged-in">
-              <p className="button" onClick={handleLogout}>
+          {isUserLoggedIn() ? (
+            <div className="user-logged-in">
+              <p className="button" onClick={handleUserLogout}>
                 Logout
               </p>
             </div>
@@ -78,9 +91,19 @@ const Navbar = () => {
             <NavbarAuth />
           )}
         </div>
-        <Link to="/login" className="nav-item nav-link">
-          <i className="fas fa-user-shield admin-icon" onClick={handleLogout}></i> Admin
-        </Link>
+
+        {/* Admin Section */}
+        {isAdminLoggedIn() ? (
+          <div className="admin-logged-in">
+            <p className="button" onClick={handleAdminLogout}>
+              Admin Logout
+            </p>
+          </div>
+        ) : (
+          <Link to="/login" className="nav-item nav-link">
+            <i className="fas fa-user-shield admin-icon"></i> Admin
+          </Link>
+        )}
       </div>
     </nav>
   );
