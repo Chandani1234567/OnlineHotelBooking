@@ -4,6 +4,7 @@ import 'animate.css/animate.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
+
 const RoomBox = ({ imgSrc, price, name, stars, features, delay, roomType, description, amenities, imgAmenity }) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
@@ -11,7 +12,7 @@ const RoomBox = ({ imgSrc, price, name, stars, features, delay, roomType, descri
 
   const handleBookNow = (event) => {
     event.preventDefault();
-    navigate('/book-a-room', { state: { roomType: selectedRoomType } });
+    navigate('https://react-project-6rl2.onrender.com//book-a-room', { state: { roomType: selectedRoomType } });
   };
   
   const handleViewDetail = (event) => {
