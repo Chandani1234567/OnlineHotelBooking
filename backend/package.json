@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "type": "module",
+  "homepage": "https://react-project-6rl2.onrender.com", 
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server",
