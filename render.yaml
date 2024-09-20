@@ -1,0 +1,4 @@
+redirects:
+  - source: /rooms/*
+    destination: /
+    status: 200

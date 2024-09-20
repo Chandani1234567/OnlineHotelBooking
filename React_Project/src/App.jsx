@@ -71,13 +71,13 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Service />} />
-          <Route path="https://react-project-6rl2.onrender.com/book-a-room/rooms" element={<Rooms />} />
+          <Route path="https://react-project-6rl2.onrender.com/rooms" element={<Rooms />} />
           <Route path="/team" element={<TeamSection />} />
           <Route path="/testimonial" element={<Testimonials />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="https://react-project-6rl2.onrender.com/book-a-room" element={<Book_a_room />} />
           <Route path="/explore" element={<Explore />} />
-          <Route path="https://react-project-6rl2.onrender.com/book-a-room/room/:roomType" element={<Room />} />
+          <Route path="https://react-project-6rl2.onrender.com/room/:roomType" element={<Room />} />
           <Route path="/apartment" element={<Apartment />} />
           <Route path="/restaurant" element={<Restaurant />} />
           <Route path="/spa" element={<Spa />} />

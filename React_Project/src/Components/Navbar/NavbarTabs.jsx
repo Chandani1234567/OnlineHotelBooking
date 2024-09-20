@@ -1,4 +1,4 @@
-remove local storage
+
 import React from "react";
 import { Link } from "react-router-dom";
 import NavbarAuth from "./NavbarAuth/client/NavbarAuth";

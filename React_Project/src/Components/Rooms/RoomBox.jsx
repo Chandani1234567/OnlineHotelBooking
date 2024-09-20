@@ -12,7 +12,7 @@ const RoomBox = ({ imgSrc, price, name, stars, features, delay, roomType, descri
 
   const handleBookNow = (event) => {
     event.preventDefault();
-    navigate('https://react-project-6rl2.onrender.com//book-a-room', { state: { roomType: selectedRoomType } });
+    navigate('/book-a-room', { state: { roomType: selectedRoomType } });
   };
   
   const handleViewDetail = (event) => {
