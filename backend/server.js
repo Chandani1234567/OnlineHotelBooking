@@ -19,13 +19,13 @@ const PORT = process.env.PORT || 5000;
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Serve static files from the React frontend
-app.use(express.static(path.join(__dirname, 'React_Project/dist'))); // Change to 'dist'
+app.use(express.static(path.join(__dirname, '../React_Project/dist')));
 
 // Catch-all route to serve index.html for any other route
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'React_Project/dist', 'index.html')); // Change to 'dist'
+  res.sendFile(path.join(__dirname, '../React_Project/dist', 'index.html')); // Adjusted path
 });
+
 
 
 
