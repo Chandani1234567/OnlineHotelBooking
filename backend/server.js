@@ -7,12 +7,17 @@ import CustomerBooking from "./models/CustomerBooking.js";
 import bookingRoutes from './routes/bookingRoutes.js';
 import customerRoutes from './routes/customerRoutes.js';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 import cors from 'cors';
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Get the directory name from the current module's URL
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Serve static files from the React frontend
 app.use(express.static(path.join(__dirname, 'React_Project/dist'))); // Change to 'dist'
