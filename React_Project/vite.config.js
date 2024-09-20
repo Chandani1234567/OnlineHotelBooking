@@ -10,12 +10,10 @@ export default defineConfig(({ mode }) => {
             'process.env.MONGO_URI': JSON.stringify(env.MONGO_URI),
         },
         plugins: [react()],
-        build: {
-            outDir: 'dist', // Ensure this matches your Render.com publish directory
-        },
-        // Ensure all requests redirect to index.html for React Router
-        server: {
-            historyApiFallback: true, // This ensures the server redirects all requests to index.html
-        },
-    };
+        // server: {
+        //     host: true,
+        //     strictPort: true,
+        //     port: 8000
+        // },
+    }
 });
