@@ -8,7 +8,7 @@ import Admin from '../models/Admin.js'; // Ensure correct import path
 const router = express.Router();
 const SECRET_KEY = process.env.JWT_SECRET || 'Aanchal'; // Load secret key from environment or default
 
-// Admin signup route
+
 // Admin signup route
 router.post("/admins", async (req, res) => {
   const { secretKey, email, password, confirmPassword } = req.body;
