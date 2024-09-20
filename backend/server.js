@@ -6,12 +6,22 @@ import authRoutes from './routes/auth.js';
 import CustomerBooking from "./models/CustomerBooking.js"; 
 import bookingRoutes from './routes/bookingRoutes.js';
 import customerRoutes from './routes/customerRoutes.js';
+import path from 'path';
 
 import cors from 'cors';
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+// Serve static files from the React frontend
+app.use(express.static(path.join(__dirname, 'React_Project/build'))); // Update this if necessary
+
+// Catch-all route to serve index.html for any other route
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'React_Project/build', 'index.html')); // Adjust path as needed
+});
+
 
 // Enable CORS with the appropriate origin
 app.use(cors({
