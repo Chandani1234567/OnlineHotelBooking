@@ -45,6 +45,16 @@ app.use('/api/bookings', bookingRoutes);
 app.use('/api/customer', customerRoutes);
 
 
+// Serve static files from the 'dist' directory (this is where Vite builds your frontend files)
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Catch-all route to serve index.html for React Router routes
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+});
+
+
+
 // Route for Customer Form submissions
 app.post("/customer", async (req, res) => {
   try {
