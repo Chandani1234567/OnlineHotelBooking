@@ -44,7 +44,7 @@ const Navbar = () => {
           <Link to="/services" className="nav-item nav-link">
             Services
           </Link>
-          <Link to="https://onlinehotelbooking.onrender.com/rooms" className="nav-item nav-link">
+          <Link to="/rooms" className="nav-item nav-link">
             Rooms
           </Link>
           <Link to="/contact" className="nav-item nav-link">
