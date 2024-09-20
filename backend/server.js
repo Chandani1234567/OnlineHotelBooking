@@ -18,6 +18,8 @@ app.use(cors({
   origin: 'https://react-project-6rl2.onrender.com'
 }));
 
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

@@ -11,7 +11,7 @@ const AdminLoginForm = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [forgotPassword, setForgotPassword] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const handlePasswordToggle = () => {
     setPasswordVisible(!passwordVisible);
