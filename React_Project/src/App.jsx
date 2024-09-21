@@ -51,7 +51,7 @@ const App = () => {
 
   const fetchAPI = async () => {
     try {
-      const response = await axios.get("https://onlinehotelbooking.onrender.com");
+      const response = await axios.get("https://onlinehotelbookingbackend.onrender.com");
       setArray(response.data.fruits);
       console.log(response.data.fruits);
     } catch (error) {

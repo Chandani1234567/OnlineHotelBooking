@@ -155,7 +155,7 @@ const BookingForm = () => {
     try {
         // Send booking data to the server
         const response = await axios.post(
-            "https://onlinehotelbooking.onrender.com/api/bookings",
+            "https://onlinehotelbookingbackend.onrender.com/api/bookings",
             bookingData
         );
 
