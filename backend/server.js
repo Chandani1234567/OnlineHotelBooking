@@ -7,12 +7,14 @@ import CustomerBooking from "./models/CustomerBooking.js";
 import bookingRoutes from './routes/bookingRoutes.js';
 import customerRoutes from './routes/customerRoutes.js';
 import path from 'path';
+import { fileURLToPath } from 'url';
 
 import cors from 'cors';
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
 
 
 
