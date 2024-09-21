@@ -52,7 +52,7 @@ const AdminSignupForm = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5000/api/admins", formData);
+      const response = await axios.post("https://onlinehotelbookingbackend.onrender.com/api/admins", formData);
       setSuccess("Signup successful!");
       setError("");
       setTimeout(() => navigate("/login"), 2);

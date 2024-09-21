@@ -24,7 +24,7 @@ const AdminLoginForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/login", // Ensure this endpoint is admin-specific
+        "https://onlinehotelbookingbackend.onrender.com/api/login", // Ensure this endpoint is admin-specific
         { email, password },
         { headers: { "Content-Type": "application/json" } }
       );

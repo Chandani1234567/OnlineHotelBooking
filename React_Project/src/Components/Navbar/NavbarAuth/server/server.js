@@ -15,7 +15,7 @@ const JWT_SECRET = "Y8yChgRFGO+niH3Nz7+Nvp/P86VUFVRbmoUEAbCU5JE="
 
 // CORS configuration
 const corsOptions = {
-    origin: 'http://localhost:5173', // Your frontend URL
+    origin: 'https://onlinehotelbookingfrontend.onrender.com', // Your frontend URL
     credentials: true, // Include credentials if you're sending cookies or tokens
     allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers in requests
     methods: ['POST', 'GET', 'PUT', 'DELETE', 'OPTIONS'], // Allowed HTTP methods
