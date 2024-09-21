@@ -14,13 +14,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Serve static files from the React frontend
-app.use(express.static(path.join(__dirname, 'React_Project/dist'))); // Change to 'dist'
 
-// Catch-all route to serve index.html for any other route
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'React_Project/dist', 'index.html')); // Change to 'dist'
-});
 
 
 
