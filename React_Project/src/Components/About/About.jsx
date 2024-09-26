@@ -7,9 +7,9 @@ import { useNavigate } from 'react-router-dom';
 
 const About = () => {
   const navigate = useNavigate();
-
+  event.preventDefault();
   const handleExplore = (event) => {
-    event.preventDefault();
+    
     navigate('/explore');
   };
 

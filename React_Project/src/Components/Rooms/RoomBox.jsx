@@ -4,6 +4,7 @@ import 'animate.css/animate.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
+
 const RoomBox = ({ imgSrc, price, name, stars, features, delay, roomType, description, amenities, imgAmenity }) => {
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);

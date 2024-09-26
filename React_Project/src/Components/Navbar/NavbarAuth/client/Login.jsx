@@ -24,7 +24,7 @@ const Login = ({ closeLogin, toggleForm }) => {
     try {
       // Ensure the backend URL is correct
       const response = await axios.post(
-        "http://localhost:4000/login",
+        "https://onlinehotelbookingbackend.onrender.com/login",
         { email, password }, // Send data as JSON
         { headers: { "Content-Type": "application/json" } }
       );
@@ -50,7 +50,7 @@ const Login = ({ closeLogin, toggleForm }) => {
 
     try {
       await axios.post(
-        "http://localhost:4000/forgot-password",
+        "http://localhost:5000/forgot-password",
         { email }, // Send data as JSON
         { headers: { "Content-Type": "application/json" } }
       );

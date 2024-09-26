@@ -37,7 +37,7 @@ const NavbarAuth = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:4000/logout",
+        "https://onlinehotelbookingbackend.onrender.com/logout",
         {},
         {
           withCredentials: true,

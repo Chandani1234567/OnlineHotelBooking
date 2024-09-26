@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://react-project-6rl2.onrender.com", 
   "scripts": {
     "start:frontend": "npm run dev",
     "start:backend": "cd src/Components/Navbar/NavbarAuth/server && nodemon server.js",

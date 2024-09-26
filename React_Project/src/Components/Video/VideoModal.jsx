@@ -13,7 +13,7 @@ const VideoModal = () => {
             <div className="ratio ratio-16x9">
               <iframe
                 className="embed-responsive-item"
-                src=""
+                
                 id="video"
                 allowFullScreen
                 allowscriptaccess="always"

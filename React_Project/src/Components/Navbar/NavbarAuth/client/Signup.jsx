@@ -72,7 +72,7 @@ const Signup = ({ closeLogin, toggleForm }) => {
 
     try {
       // Update the URL with your backend server's address and port
-      await axios.post("http://localhost:4000/signup", {
+      await axios.post("https://onlinehotelbookingbackend.onrender.com/signup", {
         name,
         email,
         password,

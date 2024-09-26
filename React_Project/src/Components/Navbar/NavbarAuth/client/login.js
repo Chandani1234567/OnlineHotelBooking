@@ -41,3 +41,5 @@ export const initializeLoginForm = () => {
     });
   });
 };
+
+export default Login;
