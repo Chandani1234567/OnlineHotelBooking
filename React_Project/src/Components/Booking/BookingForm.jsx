@@ -154,11 +154,7 @@ const BookingForm = () => {
 
     try {
         // Send booking data to the server
-        const response = await axios.post(
-            "https://onlinehotelbooking.onrender.com/api/bookings",
-            bookingData
-        );
-
+        const response = await axios.post("http://localhost:5000/api/bookings", bookingData);
         if (response.status === 201) {
             alert("Booking successful!");
             // Clear the form

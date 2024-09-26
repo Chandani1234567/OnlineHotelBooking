@@ -31,9 +31,13 @@ if (!mongoURI) {
     process.exit(1); // Exit the application if mongoURI is not defined
 }
 
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoURI)
     .then(() => console.log('MongoDB connected'))
-    .catch(err => console.log('MongoDB connection error:', err));
+    .catch(err => {
+        console.error('MongoDB connection error:', err);
+        process.exit(1); // Exit if the connection fails
+    });
+
 
 // User Authentication Routes
 app.post('/signup', async (req, res) => {
@@ -91,5 +95,5 @@ app.post('/reset-password', async (req, res) => {
     res.send('Password reset functionality');
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

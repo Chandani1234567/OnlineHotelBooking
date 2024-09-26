@@ -9,9 +9,15 @@ const Navbar = () => {
     return !!localStorage.getItem("authToken");
   };
 
+  // Function to check if admin is logged in based on admin token existence
+  const isAdminLoggedIn = () => {
+    return !!localStorage.getItem("adminToken");
+  };
+
   // Function to handle logout
   const handleLogout = () => {
     localStorage.removeItem("authToken");
+    localStorage.removeItem("adminToken"); // Remove admin token on admin logout
     // Redirect to login page after logout
     window.location.href = "/login";
   };
@@ -67,19 +73,19 @@ const Navbar = () => {
             </div>
           </div>
         </div>
-        { <div className="navbar-auth">
-          {isLoggedIn() ? (
+        <div className="navbar-auth">
+          {isAdminLoggedIn() ? (
             <div className="admin-logged-in">
               <p className="button" onClick={handleLogout}>
-                Logout
+                Admin Logout
               </p>
             </div>
           ) : (
             <NavbarAuth />
           )}
-        </div> }
+        </div>
         <Link to="/login" className="nav-item nav-link">
-          <i className="fas fa-user-shield admin-icon" onClick={handleLogout} ></i> Admin
+          <i className="fas fa-user-shield admin-icon"></i> Admin
         </Link>
       </div>
     </nav>

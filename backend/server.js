@@ -6,6 +6,7 @@ import authRoutes from './routes/auth.js';
 import CustomerBooking from "./models/CustomerBooking.js"; 
 import bookingRoutes from './routes/bookingRoutes.js';
 import customerRoutes from './routes/customerRoutes.js';
+import contactRoutes from './routes/contactRoutes.js';
 
 import cors from 'cors';
 dotenv.config();
@@ -27,6 +28,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
+
 // MongoDB connection
 mongoose.connect(process.env.MONGO_CONN, {
   serverSelectionTimeoutMS: 5000, // Increase timeout to 5 seconds
@@ -37,15 +39,11 @@ mongoose.connect(process.env.MONGO_CONN, {
 
 
 
-
-
-
-
-
 // Use imported routes
 app.use('/api', authRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/customer', customerRoutes);
+app.use('/api', contactRoutes);
 
 
 // Route for Customer Form submissions
@@ -59,30 +57,6 @@ app.post("/customer", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
-
-// Route to get all customer bookings
-// app.get("/bookings", async (req, res) => {
-//   try {
-//     const bookings = await CustomerBooking.find(); // Fetch all customer bookings
-//     res.json(bookings); // Respond with the bookings data
-//   } catch (err) {
-//     console.error("Error fetching bookings:", err);
-//     res.status(500).send("Server Error");
-//   }
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
