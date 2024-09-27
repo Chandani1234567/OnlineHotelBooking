@@ -90,9 +90,9 @@ const AdminLoginForm = () => {
               
                 <div className="signup-link">
                   Don't have an account?{" "}
-                  <a href="/signup" id="signup">
+                  <Link to="/signup" id="signup">
                     Signup
-                  </a>
+                  </Link>
                 </div>
               </div>
             </>
