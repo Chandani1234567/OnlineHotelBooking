@@ -30,7 +30,7 @@ const ContactForm = () => {
         
         console.log('Submitting data:', formData); // Log the form data
         try {
-            const response = await axios.post('http://localhost:5000/api/contact', formData);
+            const response = await axios.post('https://onlinehotelbookingbackend.onrender.com/api/contact', formData);
             if (response.status === 201) {
                 setSubmitted(true);
                 setFormData({
