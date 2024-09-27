@@ -45,11 +45,19 @@ const AdminSignupForm = () => {
     event.preventDefault();
     setLoading(true);
 
-    if (formData.password !== formData.confirmPassword) {
-      setError("Passwords do not match");
-      setLoading(false);
-      return;
-    }
+   // Check if the secret key is correct
+ if (formData.secretKey !== "Aanchal") {
+  setError("Invalid secret key. Please enter 'Aanchal'.");
+  setLoading(false);
+  return;
+}
+
+// Check if passwords match
+if (formData.password !== formData.confirmPassword) {
+  setError("Passwords do not match");
+  setLoading(false);
+  return;
+}
 
     try {
       const response = await axios.post("https://onlinehotelbookingbackend.onrender.com/api/admins", formData);
