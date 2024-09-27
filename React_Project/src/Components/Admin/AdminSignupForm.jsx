@@ -45,12 +45,6 @@ const AdminSignupForm = () => {
     event.preventDefault();
     setLoading(true);
 
-   // Check if the secret key is correct
- if (formData.secretKey !== "Aanchal") {
-  setError("Invalid secret key.");
-  setLoading(false);
-  return;
-}
 
 // Check if passwords match
 if (formData.password !== formData.confirmPassword) {
