@@ -55,7 +55,7 @@ const AdminSignupForm = () => {
       const response = await axios.post("https://onlinehotelbookingbackend.onrender.com/api/admins", formData);
       setSuccess("Signup successful!");
       setError("");
-      setTimeout(() => navigate("/login"), 2);
+      setTimeout(() => navigate("/login"), 2000);
     } catch (error) {
       setError(error.response ? error.response.data.message : error.message);
       setSuccess("");
