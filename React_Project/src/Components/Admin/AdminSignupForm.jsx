@@ -47,7 +47,7 @@ const AdminSignupForm = () => {
 
    // Check if the secret key is correct
  if (formData.secretKey !== "Aanchal") {
-  setError("Invalid secret key. Please enter 'Aanchal'.");
+  setError("Invalid secret key.");
   setLoading(false);
   return;
 }
