@@ -42,7 +42,7 @@ mongoose.connect(process.env.MONGO_CONN, {
 
 
 // Use imported routes
-app.use('/api', authRoutes);
+app.use('/api/auth', authRoutes);
 app.use('/api/bookings', bookingRoutes);
 app.use('/api/customer', customerRoutes);
 app.use('/api', contactRoutes);
