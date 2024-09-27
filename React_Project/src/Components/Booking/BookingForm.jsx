@@ -5,8 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import "./Booking.css";
 import axios from "axios";
 
-import Login from "../Navbar/NavbarAuth/client/Login";
-import Signup from "../Navbar/NavbarAuth/client/Signup";
+
 
 const BookingForm = () => {
   const location = useLocation();
@@ -97,8 +96,7 @@ const BookingForm = () => {
 
 
 
-  const [showLogin, setShowLogin] = useState(false);
-  const [showSignup, setShowSignup] = useState(false);
+  
   
   const handleInputChange = (e) => {
     const { id, value } = e.target;
@@ -116,81 +114,59 @@ const BookingForm = () => {
   };
 
 
-  const checkLoggedIn = () => {
-    const token = localStorage.getItem("authToken");
-    return token ? true : false;
-  };
+ 
 
 
-  const handleSubmit = async (e) => {
+ 
+const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validate the form first
     if (!validateForm()) {
-        // If validation fails, stop the submission
-        return;
+      return;
     }
 
-    // Check if the user is logged in
-    if (!checkLoggedIn()) {
-        setShowLogin(true);
-        return;
-    }
-
-    // Prepare booking data
     const bookingData = {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
-        idProofNumber: formData.idProofNumber,
-        idProofType: formData.idProofType,
-        checkinDate: formData.checkinDate,
-        checkoutDate: formData.checkoutDate,
-        adults: parseInt(formData.select1), // Mapping to adults
-        children: parseInt(formData.select2) || 0, // Mapping to children
-        roomType: formData.select3, // Mapping to roomType
-        message: formData.message,
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      idProofNumber: formData.idProofNumber,
+      idProofType: formData.idProofType,
+      checkinDate: formData.checkinDate,
+      checkoutDate: formData.checkoutDate,
+      adults: parseInt(formData.select1),
+      children: parseInt(formData.select2) || 0,
+      roomType: formData.select3,
+      message: formData.message,
     };
 
     try {
-        // Send booking data to the server
-        const response = await axios.post(
-            "https://onlinehotelbookingbackend.onrender.com/api/bookings",
-            bookingData
-        );
+      const response = await axios.post(
+        "https://onlinehotelbookingbackend.onrender.com/api/bookings",
+        bookingData
+      );
 
-        if (response.status === 201) {
-            alert("Booking successful!");
-            // Clear the form
-            setFormData({
-                name: "",
-                email: "",
-                phone: "",
-                idProofNumber: "",
-                idProofType: "",
-                checkinDate: null,
-                checkoutDate: null,
-                select1: "",
-                select2: "",
-                select3: "",
-                message: "",
-            });
-        }
+      if (response.status === 201) {
+        alert("Booking successful!");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          idProofNumber: "",
+          idProofType: "",
+          checkinDate: null,
+          checkoutDate: null,
+          select1: "",
+          select2: "",
+          select3: "",
+          message: "",
+        });
+      }
     } catch (err) {
-        console.error("Error submitting booking:", err);
-        const errorMessage = err.response?.data?.message || "An error occurred. Please try again.";
-        alert(`An error occurred: ${errorMessage}`);
+      console.error("Error submitting booking:", err);
+      const errorMessage = err.response?.data?.message || "An error occurred. Please try again.";
+      alert(`An error occurred: ${errorMessage}`);
     }
-};
-
-const handleLoginClose = () => setShowLogin(false);
-  const handleSignupClose = () => setShowSignup(false);
-
-  const toggleForm = () => {
-    setShowLogin(false);
-    setShowSignup(true);
   };
-
 
   return (
     <div className="booking-form">
@@ -335,18 +311,7 @@ const handleLoginClose = () => setShowLogin(false);
           </div>
         </div>
       </form>
-      {showLogin && (
-        <Login closeLogin={handleLoginClose} toggleForm={toggleForm} />
-      )}
-      {showSignup && (
-        <Signup
-          closeLogin={handleSignupClose}
-          toggleForm={() => {
-            setShowSignup(false);
-            setShowLogin(true);
-          }}
-        />
-      )}
+    
     </div>
   );
 };
