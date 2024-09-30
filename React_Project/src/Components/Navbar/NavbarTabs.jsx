@@ -3,8 +3,31 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NavbarAuth from "./NavbarAuth/client/NavbarAuth";
 import "./Navbar.css"; // Ensure you import the CSS file
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+
+
+// const Navbar = () => {
+//   // Function to check if user is logged in based on token existence
+//   const isLoggedIn = () => {
+//     return !!localStorage.getItem("authToken");
+//   };
+
+//   // Function to check if admin is logged in based on admin token existence
+//   const isAdminLoggedIn = () => {
+//     return !!localStorage.getItem("adminToken");
+//   };
+
+//   // Function to handle logout
+//   const handleLogout = () => {
+//     localStorage.removeItem("authToken");
+//     localStorage.removeItem("adminToken"); // Remove admin token on admin logout
+//     // Redirect to login page after logout
+//     window.location.href = "/login";
+//   };
 
 const Navbar = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
   // Function to check if user is logged in based on token existence
   const isLoggedIn = () => {
     return !!localStorage.getItem("authToken");
@@ -20,9 +43,8 @@ const Navbar = () => {
     localStorage.removeItem("authToken");
     localStorage.removeItem("adminToken"); // Remove admin token on admin logout
     // Redirect to login page after logout
-    window.location.href = "/login";
+    navigate("/login"); // Use navigate instead of window.location.href
   };
-
   return (
     <nav className="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
       <a href="index.html" className="navbar-brand d-block d-lg-none">
