@@ -32,7 +32,7 @@ const NewCustomerForm = () => {
 
     try {
       // Updated API endpoint to /customer
-      const response = await axios.post('http://localhost:5000/customer', booking);
+      const response = await axios.post('https://onlinehotelbookingbackend.onrender.com/customer', booking);
       setSuccessMessage('Booking successful!');
       setBooking({
         name: '',
