@@ -15,20 +15,14 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 
-
-
-
-
 // Enable CORS with the appropriate origin
 app.use(cors({
   origin: 'https://onlinehotelbookingfrontend.onrender.com'
 }));
 
 
-
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 
 
 // MongoDB connection
@@ -37,8 +31,6 @@ mongoose.connect(process.env.MONGO_CONN, {
 })
 .then(() => console.log('Connected to MongoDB'))
 .catch((error) => console.error('Error connecting to MongoDB:', error));
-
-
 
 
 // Use imported routes

@@ -3,8 +3,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./AdminLoginForm.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
 
 const AdminLoginForm = () => {
   const [email, setEmail] = useState("");
@@ -14,6 +13,8 @@ const AdminLoginForm = () => {
   const [loading, setLoading] = useState(false);
   const [forgotPassword, setForgotPassword] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
+
+  const navigate = useNavigate(); // Create navigate instance
 
   const handlePasswordToggle = () => {
     setPasswordVisible(!passwordVisible);
@@ -35,8 +36,7 @@ const AdminLoginForm = () => {
       if (token) {
         localStorage.setItem("adminToken", token);
         setIsLoggedIn(true);
-        // Redirect to dashboard or any other authenticated route
-        window.location.href = "/dashboard";
+        navigate("/dashboard"); // Use navigate for redirection
       }
     } catch (error) {
       console.error("Axios error:", error.response?.data);
@@ -46,9 +46,6 @@ const AdminLoginForm = () => {
     }
   };
 
- 
-
-  // Function to check if admin is logged in based on admin token existence
   const isAdminLoggedIn = () => {
     return !!localStorage.getItem("adminToken");
   };
@@ -89,7 +86,6 @@ const AdminLoginForm = () => {
                 {loading ? "Logging in..." : "Login as Admin"}
               </button>
               <div className="additional-links">
-              
                 <div className="signup-link">
                   Don't have an account?{" "}
                   <Link to="/signup" id="signup">
@@ -116,7 +112,6 @@ const AdminLoginForm = () => {
               <button
                 type="button"
                 className="button"
-                onClick={handleForgotPassword}
                 disabled={loading}
               >
                 {loading ? "Sending..." : "Send Reset Link"}
