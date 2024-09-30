@@ -26,7 +26,6 @@ import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 //   };
 
 const Navbar = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
 
   // Function to check if user is logged in based on token existence
   const isLoggedIn = () => {
