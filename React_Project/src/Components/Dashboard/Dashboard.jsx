@@ -6,11 +6,11 @@ const Dashboard = () => {
     <div>
       <header className="header">
         <div className="left">
-          <a href="/">Hotel Management</a>
+          <Link to="/">Hotel Management</Link>
         </div>
         <div className="right">
-        <a href="/dashboardhome">Admin</a>
-          <a href="#">Reception</a>
+        <Link to="/dashboardhome">Admin</Link>
+          <Link to="#">Reception</Link>
         </div>
       </header>
       <div className="content">
