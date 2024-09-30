@@ -17,7 +17,6 @@ const Dashboard = () => {
         </div>
       </header>
       <div className="content">
-        <h1>Welcome to the Dashboard</h1>
         <img src="img/pic1.jpg" alt="The Taj Group Welcomes You" />
       </div>
     </div>
